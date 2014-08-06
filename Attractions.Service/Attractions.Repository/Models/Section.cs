@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Attractions.Repository.Models
 {
-    public class AttractionType
+    public class Section
     {
+        public int SectionId { get; set; }
+        public string SectionName { get; set; }
+        public string LocaleId { get; set; }
     }
 }
