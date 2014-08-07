@@ -10,6 +10,6 @@ namespace Attractions.Repository.Models
     {
         public int SectionId { get; set; }
         public string SectionName { get; set; }
-        public string LocaleId { get; set; }
+        public int LocaleId { get; set; }
     }
 }

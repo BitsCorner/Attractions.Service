@@ -4,15 +4,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using Attractions.Repository;
+using Attractions.Repository.Models;
 namespace Attractions.Service.Controllers
 {
     public class ValuesController : ApiController
     {
+        private AttractionsContext db = new AttractionsContext();
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<Country> Get()
         {
-            return new string[] { "value1", "value2" };
+            return db.Countries.AsEnumerable();
         }
 
         // GET api/values/5

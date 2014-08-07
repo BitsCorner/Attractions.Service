@@ -7,6 +7,7 @@ using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Attractions.Service;
 using Attractions.Service.Controllers;
+using Attractions.Repository.Models;
 
 namespace Attractions.Service.Tests.Controllers
 {
@@ -20,7 +21,7 @@ namespace Attractions.Service.Tests.Controllers
             ValuesController controller = new ValuesController();
 
             // Act
-            IEnumerable<string> result = controller.Get();
+            IEnumerable<Country> result = controller.Get();
 
             // Assert
             Assert.IsNotNull(result);

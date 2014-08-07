@@ -10,7 +10,7 @@ namespace Attractions.Repository.Models
     {
         public int CityId { get; set; }
         public string CityName { get; set; }
-        public string LocaleId { get; set; }
+        public int LocaleId { get; set; }
         public State State { get; set; }
     }
 }
