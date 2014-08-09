@@ -18,7 +18,7 @@ namespace Attractions.Service.Tests.Controllers
         public void Get()
         {
             // Arrange
-            CountryController controller = new CountryController();
+            CountyController controller = new CountyController();
 
             // Act
             IEnumerable<Country> result = controller.Get();
@@ -34,7 +34,7 @@ namespace Attractions.Service.Tests.Controllers
         public void GetById()
         {
             // Arrange
-            CountryController controller = new CountryController();
+            CountyController controller = new CountyController();
 
             // Act
             Country result = controller.Get(5);
@@ -47,7 +47,7 @@ namespace Attractions.Service.Tests.Controllers
         public void Post()
         {
             // Arrange
-            var controller = new CountryController();
+            var controller = new CountyController();
 
             // Act
             controller.Post(new Country() { 
@@ -64,7 +64,7 @@ namespace Attractions.Service.Tests.Controllers
         public void Put()
         {
             // Arrange
-            var controller = new CountryController();
+            var controller = new CountyController();
 
             // Act
             controller.Put(5, new Country {
@@ -80,7 +80,7 @@ namespace Attractions.Service.Tests.Controllers
         public void Delete()
         {
             // Arrange
-            var controller = new CountryController();
+            var controller = new CountyController();
 
             // Act
             controller.Delete(5);
