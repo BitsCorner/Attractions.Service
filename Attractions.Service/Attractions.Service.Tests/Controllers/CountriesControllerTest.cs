@@ -12,13 +12,13 @@ using Attractions.Repository.Models;
 namespace Attractions.Service.Tests.Controllers
 {
     [TestClass]
-    public class ValuesControllerTest
+    public class CountriesControllerTest
     {
         [TestMethod]
         public void Get()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            CountyController controller = new CountyController();
 
             // Act
             IEnumerable<Country> result = controller.Get();
@@ -34,10 +34,10 @@ namespace Attractions.Service.Tests.Controllers
         public void GetById()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            CountyController controller = new CountyController();
 
             // Act
-            string result = controller.Get(5);
+            Country result = controller.Get(5);
 
             // Assert
             Assert.AreEqual("value", result);
@@ -47,10 +47,14 @@ namespace Attractions.Service.Tests.Controllers
         public void Post()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new CountyController();
 
             // Act
-            controller.Post("value");
+            controller.Post(new Country() { 
+                    CountryId = 1,
+                    CountryName ="Canada",
+                    LocaleId = 1033 }
+                  );
 
             // Assert
         }
@@ -59,7 +63,7 @@ namespace Attractions.Service.Tests.Controllers
         public void Put()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new CountyController();
 
             // Act
             controller.Put(5, "value");
@@ -71,7 +75,7 @@ namespace Attractions.Service.Tests.Controllers
         public void Delete()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new CountyController();
 
             // Act
             controller.Delete(5);
