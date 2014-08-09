@@ -12,7 +12,7 @@ using Attractions.Repository.Models;
 namespace Attractions.Service.Tests.Controllers
 {
     [TestClass]
-    public class CountriesControllerTest
+    public class CounrtyControllerTest
     {
         [TestMethod]
         public void Get()
@@ -53,7 +53,8 @@ namespace Attractions.Service.Tests.Controllers
             controller.Post(new Country() { 
                     CountryId = 1,
                     CountryName ="Canada",
-                    LocaleId = 1033 }
+                    LocaleId = 1033 
+                        }
                   );
 
             // Assert
@@ -66,7 +67,11 @@ namespace Attractions.Service.Tests.Controllers
             var controller = new CountyController();
 
             // Act
-            controller.Put(5, "value");
+            controller.Put(5, new Country {
+                                    CountryId = 1,
+                                    CountryName = "Canada",
+                                    LocaleId = 1033 
+                                    });
 
             // Assert
         }

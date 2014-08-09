@@ -28,8 +28,10 @@ namespace Attractions.Service.Controllers
             this.unitOfWork.Save();
         }
 
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Country country)
         {
+            this.unitOfWork.CountryRepository.Update(country);
+            this.unitOfWork.Save();
         }
 
         public void Delete(int id)
