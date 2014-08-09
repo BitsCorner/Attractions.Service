@@ -8,7 +8,7 @@ using Attractions.Repository;
 using Attractions.Repository.Models;
 namespace Attractions.Service.Controllers
 {
-    public class CountyController : BaseController
+    public class CountryController : BaseController
     {
         public IEnumerable<Country> Get()
         {
