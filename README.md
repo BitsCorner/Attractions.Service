@@ -8,3 +8,16 @@ Technologies used:
 - Asp.Net Web API
 - Entityframework Code First
 
+Security:
+
+Logging:
+
+Exception Handling:
+
+Context:
+
+Unit Test:
+
+Integration Test:
+
+Performance Test:
