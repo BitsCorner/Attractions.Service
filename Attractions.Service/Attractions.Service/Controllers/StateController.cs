@@ -6,38 +6,44 @@ using System.Net.Http;
 using System.Web.Http;
 using Attractions.Repository;
 using Attractions.Repository.Models;
+using System.Threading.Tasks;
 namespace Attractions.Service.Controllers
 {
     public class StateController : BaseController
     {
-        public IEnumerable<State> Get()
+        public async Task<HttpResponseMessage> GetAsync()
         {
-            return this.unitOfWork.StateRepository.Get(orderBy: q => q.OrderBy(d => d.StateName));
+            var content = this.unitOfWork.StateRepository.GetAsync(orderBy: q => q.OrderBy(d => d.StateName));
+            return Request.CreateResponse(HttpStatusCode.OK, content);
             //TODO: add filter for Locale?
             //filter:
         }
 
-        public State Get(int id)
+        public async Task<HttpResponseMessage> GetAsync(int id)
         {
-            return this.unitOfWork.StateRepository.Get(filter: q => q.StateId == id).FirstOrDefault();
+            var content = this.unitOfWork.StateRepository.GetByIDAsync(id);
+            return Request.CreateResponse(HttpStatusCode.OK, content);
         }
 
-        public void Post([FromBody]State state)
+        public async Task<HttpResponseMessage> PostAsync([FromBody]State state)
         {
-            this.unitOfWork.StateRepository.Insert(state);
-            this.unitOfWork.Save();
+            await this.unitOfWork.StateRepository.InsertAsync(state);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, state);
         }
 
-        public void Put(int id, [FromBody]State state)
+        public async Task<HttpResponseMessage> PutAsync(int id, [FromBody]State state)
         {
-            this.unitOfWork.StateRepository.Update(state);
-            this.unitOfWork.Save();
+            await this.unitOfWork.StateRepository.UpdateAsync(state);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, state);
         }
 
-        public void Delete(int id)
+        public async Task<HttpResponseMessage> DeleteAsync(int id)
         {
-            this.unitOfWork.StateRepository.Delete(id);
-            this.unitOfWork.Save();
+            await this.unitOfWork.StateRepository.DeleteAsync(id);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, id);
         }
     }
 }

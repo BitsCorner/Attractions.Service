@@ -6,38 +6,44 @@ using System.Net.Http;
 using System.Web.Http;
 using Attractions.Repository;
 using Attractions.Repository.Models;
+using System.Threading.Tasks;
 namespace Attractions.Service.Controllers
 {
     public class ListingController : BaseController
     {
-        public IEnumerable<Listing> Get()
+        public async Task<HttpResponseMessage> GetAsync()
         {
-            return this.unitOfWork.ListingRepository.Get();
+            var content = this.unitOfWork.ListingRepository.GetAsync();
             //TODO: add filter for Locale?
             //filter:
+            return Request.CreateResponse(HttpStatusCode.OK, content);
         }
 
-        public Listing Get(int id)
+        public async Task<HttpResponseMessage> Get(int id)
         {
-            return this.unitOfWork.ListingRepository.Get(filter: q => q.ListingId == id).FirstOrDefault();
+            var content = this.unitOfWork.ListingRepository.GetByIDAsync(id);
+            return Request.CreateResponse(HttpStatusCode.OK, content);
         }
 
-        public void Post([FromBody]Listing Listing)
+        public async Task<HttpResponseMessage> PostAsync([FromBody]Listing listing)
         {
-            this.unitOfWork.ListingRepository.Insert(Listing);
-            this.unitOfWork.Save();
+            await this.unitOfWork.ListingRepository.InsertAsync(listing);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, listing);
         }
 
-        public void Put(int id, [FromBody]Listing Listing)
+        public async Task<HttpResponseMessage> PutAsync(int id, [FromBody]Listing listing)
         {
-            this.unitOfWork.ListingRepository.Update(Listing);
-            this.unitOfWork.Save();
+            await this.unitOfWork.ListingRepository.UpdateAsync(listing);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, listing);
         }
 
-        public void Delete(int id)
+        public async Task<HttpResponseMessage> DeleteAsync(int id)
         {
-            this.unitOfWork.ListingRepository.Delete(id);
-            this.unitOfWork.Save();
+            await this.unitOfWork.ListingRepository.DeleteAsync(id);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, id);
         }
     }
 }

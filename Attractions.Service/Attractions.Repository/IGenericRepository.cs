@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Attractions.Repository
 {
     public interface IGenericRepository<T> where T : class
     {
-        IEnumerable<T> Get(  Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "");
+        Task<IEnumerable<T>> GetAsync(  Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "");
 
-        T GetByID(object id);
+        Task<T> GetByIDAsync(object id);
         
-        void Insert(T entity);
+        Task InsertAsync(T entity);
        
-        void Delete(object id);
-        
+        Task DeleteAsync(object id);
 
-        void Delete(T entityToDelete);
+        Task DeleteAsync(T entityToDelete);
 
-        void Update(T entityToUpdate);
+        Task UpdateAsync(T entityToUpdate);
     }
 }

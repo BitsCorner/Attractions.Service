@@ -6,38 +6,44 @@ using System.Net.Http;
 using System.Web.Http;
 using Attractions.Repository;
 using Attractions.Repository.Models;
+using System.Threading.Tasks;
 namespace Attractions.Service.Controllers
 {
     public class SectionController : BaseController
     {
-        public IEnumerable<Section> Get()
+        public async Task<HttpResponseMessage> GetAsync()
         {
-            return this.unitOfWork.SectionRepository.Get(orderBy: q => q.OrderBy(d => d.SectionName));
+            var content = this.unitOfWork.SectionRepository.GetAsync(orderBy: q => q.OrderBy(d => d.SectionName));
             //TODO: add filter for Locale?
             //filter:
+            return Request.CreateResponse(HttpStatusCode.OK, content);
         }
 
-        public Section Get(int id)
+        public async Task<HttpResponseMessage> GetAsync(int id)
         {
-            return this.unitOfWork.SectionRepository.Get(filter: q => q.SectionId == id).FirstOrDefault();
+            var content = this.unitOfWork.SectionRepository.GetByIDAsync(id);
+            return Request.CreateResponse(HttpStatusCode.OK, content);
         }
 
-        public void Post([FromBody]Section Section)
+        public async Task<HttpResponseMessage> PostAsync([FromBody]Section Section)
         {
-            this.unitOfWork.SectionRepository.Insert(Section);
-            this.unitOfWork.Save();
+            await this.unitOfWork.SectionRepository.InsertAsync(Section);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, Section);
         }
 
-        public void Put(int id, [FromBody]Section Section)
+        public async Task<HttpResponseMessage> PutAsync(int id, [FromBody]Section section)
         {
-            this.unitOfWork.SectionRepository.Update(Section);
-            this.unitOfWork.Save();
+            await this.unitOfWork.SectionRepository.UpdateAsync(section);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, section);
         }
 
-        public void Delete(int id)
+        public async Task<HttpResponseMessage> DeleteAsync(int id)
         {
-            this.unitOfWork.SectionRepository.Delete(id);
-            this.unitOfWork.Save();
+            await this.unitOfWork.SectionRepository.DeleteAsync(id);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, id);
         }
     }
 }

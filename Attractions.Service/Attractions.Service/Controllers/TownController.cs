@@ -6,38 +6,44 @@ using System.Net.Http;
 using System.Web.Http;
 using Attractions.Repository;
 using Attractions.Repository.Models;
+using System.Threading.Tasks;
 namespace Attractions.Service.Controllers
 {
     public class TownController : BaseController
     {
-        public IEnumerable<Town> Get()
+        public async Task<HttpResponseMessage> GetAsync()
         {
-            return this.unitOfWork.TownRepository.Get(orderBy: q => q.OrderBy(d => d.TownName));
+            var content = this.unitOfWork.TownRepository.GetAsync(orderBy: q => q.OrderBy(d => d.TownName));
             //TODO: add filter for Locale?
             //filter:
+            return Request.CreateResponse(HttpStatusCode.OK, content);
         }
 
-        public Town Get(int id)
+        public async Task<HttpResponseMessage> GetAsync(int id)
         {
-            return this.unitOfWork.TownRepository.Get(filter: q => q.TownId == id).FirstOrDefault();
+            var result = await this.unitOfWork.TownRepository.GetAsync(filter: q => q.TownId == id);
+            return Request.CreateResponse(HttpStatusCode.OK, result.FirstOrDefault());
         }
 
-        public void Post([FromBody]Town Town)
+        public async Task<HttpResponseMessage> PostAsync([FromBody]Town town)
         {
-            this.unitOfWork.TownRepository.Insert(Town);
-            this.unitOfWork.Save();
+            await this.unitOfWork.TownRepository.InsertAsync(town);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, town);
         }
 
-        public void Put(int id, [FromBody]Town Town)
+        public async Task<HttpResponseMessage> PutAsync(int id, [FromBody]Town town)
         {
-            this.unitOfWork.TownRepository.Update(Town);
-            this.unitOfWork.Save();
+            await this.unitOfWork.TownRepository.UpdateAsync(town);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, town);
         }
 
-        public void Delete(int id)
+        public async Task<HttpResponseMessage> DeleteAsync(int id)
         {
-            this.unitOfWork.TownRepository.Delete(id);
-            this.unitOfWork.Save();
+            await this.unitOfWork.TownRepository.DeleteAsync(id);
+            await this.unitOfWork.SaveAsync();
+            return Request.CreateResponse(HttpStatusCode.OK, id);
         }
     }
 }

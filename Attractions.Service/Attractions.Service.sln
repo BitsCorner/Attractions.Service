@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Service", "Attractions.Service\Attractions.Service.csproj", "{058E8175-DAF9-41C0-9222-B0910B7022C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Service.Tests", "Attractions.Service.Tests\Attractions.Service.Tests.csproj", "{BFFF4703-5359-45C5-B4D7-D68E461833EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Service.UnitTests", "Attractions.Service.Tests\Attractions.Service.UnitTests.csproj", "{BFFF4703-5359-45C5-B4D7-D68E461833EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Repository", "Attractions.Repository\Attractions.Repository.csproj", "{A809BA76-1767-45BE-89E6-27BE5FEEF2B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Service.IntegrationTests", "Attractions.Service.IntegrationTests\Attractions.Service.IntegrationTests.csproj", "{8CAC93F9-F6EF-42AA-A387-BA3A3FD34630}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Processor", "Attractions.Processor\Attractions.Processor.csproj", "{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,14 @@ Global
 		{A809BA76-1767-45BE-89E6-27BE5FEEF2B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A809BA76-1767-45BE-89E6-27BE5FEEF2B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A809BA76-1767-45BE-89E6-27BE5FEEF2B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CAC93F9-F6EF-42AA-A387-BA3A3FD34630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CAC93F9-F6EF-42AA-A387-BA3A3FD34630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CAC93F9-F6EF-42AA-A387-BA3A3FD34630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CAC93F9-F6EF-42AA-A387-BA3A3FD34630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

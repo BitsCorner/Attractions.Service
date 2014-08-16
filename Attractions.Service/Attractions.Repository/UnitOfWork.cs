@@ -102,9 +102,9 @@ namespace Attractions.Repository
             }
         }
 
-        public void Save()
+        public Task<int> SaveAsync()
         {
-            context.SaveChanges();
+            return context.SaveChangesAsync();
         }
 
         private bool disposed = false;

@@ -15,19 +15,17 @@ namespace Attractions.Service.Tests.Controllers
     public class CounrtyControllerTest
     {
         [TestMethod]
-        public void Get()
+        [TestCategory("Unit")]
+        public void GetAsync()
         {
             // Arrange
             CountyController controller = new CountyController();
 
             // Act
-            IEnumerable<Country> result = controller.Get();
+            var result = controller.GetAsync();
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
-            Assert.AreEqual("value1", result.ElementAt(0));
-            Assert.AreEqual("value2", result.ElementAt(1));
         }
 
         [TestMethod]
@@ -37,10 +35,10 @@ namespace Attractions.Service.Tests.Controllers
             CountyController controller = new CountyController();
 
             // Act
-            Country result = controller.Get(5);
+            var result = controller.GetAsync(5);
 
             // Assert
-            Assert.AreEqual("value", result);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -50,7 +48,7 @@ namespace Attractions.Service.Tests.Controllers
             var controller = new CountyController();
 
             // Act
-            controller.Post(new Country() { 
+            controller.PostAsync(new Country() { 
                     CountryId = 1,
                     CountryName ="Canada",
                     LocaleId = 1033 
@@ -67,7 +65,7 @@ namespace Attractions.Service.Tests.Controllers
             var controller = new CountyController();
 
             // Act
-            controller.Put(5, new Country {
+            controller.PutAsync(5, new Country {
                                     CountryId = 1,
                                     CountryName = "Canada",
                                     LocaleId = 1033 
@@ -83,7 +81,7 @@ namespace Attractions.Service.Tests.Controllers
             var controller = new CountyController();
 
             // Act
-            controller.Delete(5);
+            controller.DeleteAsync(5);
 
             // Assert
         }
