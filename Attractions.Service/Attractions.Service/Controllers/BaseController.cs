@@ -16,8 +16,6 @@ namespace Attractions.Service.Controllers
         public override System.Threading.Tasks.Task<HttpResponseMessage> ExecuteAsync(System.Web.Http.Controllers.HttpControllerContext controllerContext, System.Threading.CancellationToken cancellationToken)
         {
             return base.ExecuteAsync(controllerContext, cancellationToken);
-
-            //todo
         }
 
     }
