@@ -13,15 +13,15 @@ namespace Attractions.Service.Controllers
     {
         public async Task<HttpResponseMessage> GetAsync()
         {
-            var content = this.unitOfWork.ListingRepository.GetAsync();
+            var content = await this.unitOfWork.ListingRepository.GetAsync();
             //TODO: add filter for Locale?
             //filter:
             return Request.CreateResponse(HttpStatusCode.OK, content);
         }
 
-        public async Task<HttpResponseMessage> Get(int id)
+        public async Task<HttpResponseMessage> GetAsync(int id)
         {
-            var content = this.unitOfWork.ListingRepository.GetByIDAsync(id);
+            var content = await this.unitOfWork.ListingRepository.GetByIDAsync(id);
             return Request.CreateResponse(HttpStatusCode.OK, content);
         }
 

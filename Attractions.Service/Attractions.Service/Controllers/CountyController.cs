@@ -13,11 +13,10 @@ namespace Attractions.Service.Controllers
     {
         public async Task<HttpResponseMessage> GetAsync()
         {
-            var countries = this.unitOfWork.CountryRepository.GetAsync(orderBy: q => q.OrderBy(d => d.CountryName));
+            var countries = await this.unitOfWork.CountryRepository.GetAsync(orderBy: q => q.OrderBy(d => d.CountryName));
             //TODO: add filter for Locale?
             //filter:
             return Request.CreateResponse(HttpStatusCode.OK, countries);
-
         }
 
         public async Task<HttpResponseMessage> GetAsync(int id)

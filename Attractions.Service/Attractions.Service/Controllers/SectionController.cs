@@ -13,7 +13,7 @@ namespace Attractions.Service.Controllers
     {
         public async Task<HttpResponseMessage> GetAsync()
         {
-            var content = this.unitOfWork.SectionRepository.GetAsync(orderBy: q => q.OrderBy(d => d.SectionName));
+            var content = await this.unitOfWork.SectionRepository.GetAsync(orderBy: q => q.OrderBy(d => d.SectionName));
             //TODO: add filter for Locale?
             //filter:
             return Request.CreateResponse(HttpStatusCode.OK, content);
@@ -21,7 +21,7 @@ namespace Attractions.Service.Controllers
 
         public async Task<HttpResponseMessage> GetAsync(int id)
         {
-            var content = this.unitOfWork.SectionRepository.GetByIDAsync(id);
+            var content = await this.unitOfWork.SectionRepository.GetByIDAsync(id);
             return Request.CreateResponse(HttpStatusCode.OK, content);
         }
 

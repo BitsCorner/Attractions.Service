@@ -13,7 +13,7 @@ namespace Attractions.Service.Controllers
     {
         public async Task<HttpResponseMessage> GetAsync()
         {
-            var content = this.unitOfWork.CityRepository.GetAsync(orderBy: q => q.OrderBy(d => d.CityName));
+            var content = await this.unitOfWork.CityRepository.GetAsync(orderBy: q => q.OrderBy(d => d.CityName));
             return Request.CreateResponse(HttpStatusCode.OK, content);
             //TODO: add filter for Locale?
             //filter:
