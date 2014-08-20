@@ -19,7 +19,7 @@ namespace Attractions.Service.Tests.Controllers
         public void GetAsync()
         {
             // Arrange
-            CountyController controller = new CountyController();
+            var controller = new CountryController(null);
 
             // Act
             var result = controller.GetAsync();
@@ -32,7 +32,7 @@ namespace Attractions.Service.Tests.Controllers
         public void GetById()
         {
             // Arrange
-            CountyController controller = new CountyController();
+            var controller = new CountryController(null);
 
             // Act
             var result = controller.GetAsync(5);
@@ -45,7 +45,7 @@ namespace Attractions.Service.Tests.Controllers
         public void Post()
         {
             // Arrange
-            var controller = new CountyController();
+            var controller = new CountryController(null);
 
             // Act
             controller.PostAsync(new Country() { 
@@ -62,7 +62,7 @@ namespace Attractions.Service.Tests.Controllers
         public void Put()
         {
             // Arrange
-            var controller = new CountyController();
+            var controller = new CountryController(null);
 
             // Act
             controller.PutAsync(5, new Country {
@@ -78,7 +78,7 @@ namespace Attractions.Service.Tests.Controllers
         public void Delete()
         {
             // Arrange
-            var controller = new CountyController();
+            var controller = new CountryController(null);
 
             // Act
             controller.DeleteAsync(5);

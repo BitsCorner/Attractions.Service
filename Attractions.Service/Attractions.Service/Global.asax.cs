@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace Attractions.Service
@@ -16,6 +15,7 @@ namespace Attractions.Service
         protected void Application_Start()
         {
             WebApiConfig.Register(GlobalConfiguration.Configuration);
+            UnityConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterWebApiFilters(GlobalConfiguration.Configuration.Filters);
         }
     }

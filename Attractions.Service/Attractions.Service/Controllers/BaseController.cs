@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Controllers;
 
 namespace Attractions.Service.Controllers
 {
@@ -13,7 +16,7 @@ namespace Attractions.Service.Controllers
 
         protected UnitOfWork unitOfWork = new UnitOfWork();
 
-        public override System.Threading.Tasks.Task<HttpResponseMessage> ExecuteAsync(System.Web.Http.Controllers.HttpControllerContext controllerContext, System.Threading.CancellationToken cancellationToken)
+        public override Task<HttpResponseMessage> ExecuteAsync(HttpControllerContext controllerContext, CancellationToken cancellationToken)
         {
             return base.ExecuteAsync(controllerContext, cancellationToken);
         }
