@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Service.Integra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Processor", "Attractions.Processor\Attractions.Processor.csproj", "{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitsCorner.Logging", "BitsCorner.Logging\BitsCorner.Logging.csproj", "{E9EAAACE-DDF9-41BA-A024-32FF06A7AB47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9EAAACE-DDF9-41BA-A024-32FF06A7AB47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9EAAACE-DDF9-41BA-A024-32FF06A7AB47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9EAAACE-DDF9-41BA-A024-32FF06A7AB47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9EAAACE-DDF9-41BA-A024-32FF06A7AB47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
