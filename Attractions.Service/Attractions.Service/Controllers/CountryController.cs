@@ -8,6 +8,7 @@ using Attractions.Repository;
 using Attractions.Repository.Models;
 using System.Threading.Tasks;
 using BitsCorner.Logging;
+using System.Diagnostics;
 namespace Attractions.Service.Controllers
 {
     public class CountryController : BaseController
@@ -23,7 +24,7 @@ namespace Attractions.Service.Controllers
         public async Task<HttpResponseMessage> GetAsync()
         {
             var countries = await this.unitOfWork.CountryRepository.GetAsync(orderBy: q => q.OrderBy(d => d.CountryName));
-            logger.Log("dfsf", LogType.Error);
+            logger.Log("dfsf", TraceEventType.Information);
             //TODO: add filter for Locale?
             //filter:
             return Request.CreateResponse(HttpStatusCode.OK, countries);
