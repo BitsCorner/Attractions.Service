@@ -11,6 +11,6 @@ namespace Attractions.Repository.Models
         public int TownId { get; set; }
         public string TownName { get; set; }
         public int LocaleId { get; set; }
-        public City City { get; set; }
+        //public City City { get; set; }
     }
 }

@@ -1,0 +1,8 @@
+﻿DBContact Attach Problem:
+Error: cannot attach the file mdf as database
+If was not able to attach the database use these commands in Package Manager Console:
+	sqllocaldb.exe stop v11.0
+	sqllocaldb.exe delete v11.0
+if needed run this command too:
+	Update-Database
+------------------------------------------------------------------------------------

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Practices.EnterpriseLibrary.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,28 @@ namespace BitsCorner.Logging
 {
     public class Logger : ILogger
     {
-        public Task Log(string message, LogType logType)
+        private LogWriter defaultWriter; 
+        public Logger()
         {
-            throw new NotImplementedException();
+            LoggingConfiguration loggingConfiguration = BuildProgrammaticConfig();
+            defaultWriter = new LogWriter(loggingConfiguration);
         }
 
-        public Task Log(Exception exception)
+        private LoggingConfiguration BuildProgrammaticConfig()
         {
-            throw new NotImplementedException();
+            LoggingConfiguration loggingConfiguration = new LoggingConfiguration();
+            loggingConfiguration.IsLoggingEnabled = false;
+            return loggingConfiguration;
+        }
+
+        public void Log(string message, LogType logType)
+        {
+            defaultWriter.Write(new LogEntry() { Message = message });
+        }
+
+        public void Log(Exception exception)
+        {
+          
         }
     }
 }

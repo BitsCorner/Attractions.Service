@@ -13,7 +13,7 @@ namespace Attractions.Repository.Models
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
         public int LocaleId { get; set; }
-        public Category Category { get; set; }
-        public Section Section{ get; set; }
+        //public Category Category { get; set; }
+        //public Section Section{ get; set; }
     }
 }

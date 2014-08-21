@@ -8,8 +8,8 @@ namespace BitsCorner.Logging
 {
     public interface ILogger
     {
-        Task Log(string message, LogType logType);
-        Task Log(Exception exception);
+        void Log(string message, LogType logType);
+        void Log(Exception exception);
     }
 
     public enum LogType
