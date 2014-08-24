@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace Attractions.Repository.Models
 {
-    public class Category
+    public class ListingVideo
     {
         [Key]
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public int ListingVideoId { get; set; }
+        public string YouTubeUri { get; set; }
+        public string ShortDescription { get; set; }
+        public string LongDescription { get; set; }
         public Locale Locale { get; set; }
+        public bool IsDefault { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,8 @@ namespace Attractions.Repository.Models
     {
         // some limited values cached from google places api in case the place_id changed
         // at least we should keep the country/state/city/alt/lng
-        public string LocationId { get; set; }
+        [Key]
+        public int LocationId { get; set; }
         public string place_id { get; set; }
         public string short_name { get; set; }
         public string long_name { get; set; }

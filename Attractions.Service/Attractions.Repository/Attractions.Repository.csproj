@@ -57,14 +57,18 @@
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ListingVideo.cs" />
     <Compile Include="Models\ListingPicture.cs" />
     <Compile Include="Models\Listing.cs" />
+    <Compile Include="Models\Locale.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\UsageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

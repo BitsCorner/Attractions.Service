@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace Attractions.Repository.Models
 {
-    public class Category
+    public class Locale
     {
         [Key]
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        public Locale Locale { get; set; }
+        public int LocaleId { get; set; }
+        public string LocaleName { get; set; }
     }
 }
