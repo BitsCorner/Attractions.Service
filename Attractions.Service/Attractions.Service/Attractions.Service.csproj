@@ -122,12 +122,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\ListingController.cs" />
-    <Compile Include="Controllers\SectionController.cs" />
-    <Compile Include="Controllers\TownController.cs" />
-    <Compile Include="Controllers\StateController.cs" />
-    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="Filters\ExceptionFilter.cs" />
     <Compile Include="Filters\ValidationFilter.cs" />

@@ -57,12 +57,9 @@
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\City.cs" />
-    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\ListingPicture.cs" />
     <Compile Include="Models\Listing.cs" />
-    <Compile Include="Models\Section.cs" />
-    <Compile Include="Models\State.cs" />
-    <Compile Include="Models\Town.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>

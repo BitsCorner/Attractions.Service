@@ -24,16 +24,16 @@ namespace BitsCorner.Logging
             return loggingConfiguration;
         }
 
-        public void Log(string message, TraceEventType eventType)
+        public void Log(string title, string message, TraceEventType eventType, int eventId)
         {
-            defaultWriter.Write(new LogEntry() { 
-                ActivityId = Guid.NewGuid(), //System.Threading.Thread.CurrentThread.
+                defaultWriter.Write(new LogEntry() { 
+                ActivityId = Guid.NewGuid(), //TODO:
                 Message = message,
-                EventId = 0, // TODO: need explicit error/information type code for this 
+                EventId = eventId, // TODO: 
                 Severity  = eventType,
                 TimeStamp = DateTime.UtcNow,
-                Title = "", // 
-                MachineName = "", // this is the Host computer name?
+                Title = title, 
+                MachineName = Environment.MachineName 
             });
         }
 

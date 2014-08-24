@@ -9,7 +9,7 @@ namespace BitsCorner.Logging
 {
     public interface ILogger
     {
-        void Log(string message, TraceEventType eventType);
+        void Log(string title, string message, TraceEventType eventType, int eventId);
         void Log(Exception exception);
     }
 

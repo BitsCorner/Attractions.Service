@@ -13,7 +13,11 @@ namespace Attractions.Repository.Models
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
         public int LocaleId { get; set; }
-        //public Category Category { get; set; }
-        //public Section Section{ get; set; }
+        public decimal UserRating { get; set; }
+        public decimal Ranking { get; set; }
+        public decimal PromoRank { get; set; }
+        public decimal Views { get; set; }
+        public Location Location { get; set; } // This is google place_id
+        public Category Category { get; set; }
     }
 }
