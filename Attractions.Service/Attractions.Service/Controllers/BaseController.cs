@@ -1,5 +1,4 @@
-﻿using Attractions.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -13,9 +12,6 @@ namespace Attractions.Service.Controllers
 {
     public class BaseController : ApiController
     {
-
-        protected UnitOfWork unitOfWork = new UnitOfWork();
-
         public override Task<HttpResponseMessage> ExecuteAsync(HttpControllerContext controllerContext, CancellationToken cancellationToken)
         {
             return base.ExecuteAsync(controllerContext, cancellationToken);

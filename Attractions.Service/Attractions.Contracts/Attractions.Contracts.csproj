@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}</ProjectGuid>
+    <ProjectGuid>{3785A39D-B68A-4A80-8E9B-22B87D855C53}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Attractions.Processor</RootNamespace>
-    <AssemblyName>Attractions.Processor</AssemblyName>
+    <RootNamespace>Attractions.Contracts</RootNamespace>
+    <AssemblyName>Attractions.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,20 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseProcessor.cs" />
-    <Compile Include="IListingProcessor.cs" />
-    <Compile Include="ListingProcessor.cs" />
+    <Compile Include="Listing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Attractions.Contracts\Attractions.Contracts.csproj">
-      <Project>{3785a39d-b68a-4a80-8e9b-22b87d855c53}</Project>
-      <Name>Attractions.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attractions.Repository\Attractions.Repository.csproj">
-      <Project>{a809ba76-1767-45be-89e6-27be5feef2b6}</Project>
-      <Name>Attractions.Repository</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

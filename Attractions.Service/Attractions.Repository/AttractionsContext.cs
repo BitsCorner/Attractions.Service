@@ -19,7 +19,7 @@ namespace Attractions.Repository
         public DbSet<UsageType> UsageTypes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Location> Locations { get; set; }
-        public DbSet<ListingPicture> Listings { get; set; }
+        public DbSet<Listing> Listings { get; set; }
         public DbSet<ListingPicture> ListingPictures { get; set; }
         public DbSet<ListingVideo> ListingVideos { get; set; }
 
@@ -27,5 +27,7 @@ namespace Attractions.Repository
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
     }
+ 
 }

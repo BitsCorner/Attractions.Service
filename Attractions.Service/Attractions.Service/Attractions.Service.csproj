@@ -151,9 +151,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attractions.Repository\Attractions.Repository.csproj">
-      <Project>{a809ba76-1767-45be-89e6-27be5feef2b6}</Project>
-      <Name>Attractions.Repository</Name>
+    <ProjectReference Include="..\Attractions.Contracts\Attractions.Contracts.csproj">
+      <Project>{3785a39d-b68a-4a80-8e9b-22b87d855c53}</Project>
+      <Name>Attractions.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attractions.Processor\Attractions.Processor.csproj">
+      <Project>{72c5b82a-a7aa-480a-9fb9-2d4b1af72c0e}</Project>
+      <Name>Attractions.Processor</Name>
     </ProjectReference>
     <ProjectReference Include="..\BitsCorner.Logging\BitsCorner.Logging.csproj">
       <Project>{e9eaaace-ddf9-41ba-a024-32ff06a7ab47}</Project>
