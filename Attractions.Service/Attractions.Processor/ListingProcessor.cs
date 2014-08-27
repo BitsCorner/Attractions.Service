@@ -16,14 +16,9 @@ namespace Attractions.Processor
             this.unitOfWork = unitOfWork;
         }
 
-        public Task<object> GetAllListingsAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<object> GetListingByIdAsync(int id)
-        {
-            throw new NotImplementedException();
+        public async Task<IEnumerable<Listing>> GetAllListingsAsync()
+        {   var result = await unitOfWork.ListingRepository.GetAsync();
+            return EntityMapper.Map(result);
         }
 
         public Task InsertListingAsync(Listing listing)
@@ -40,5 +35,12 @@ namespace Attractions.Processor
         {
             throw new NotImplementedException();
         }
+
+        public Task<Listing> GetListingByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }

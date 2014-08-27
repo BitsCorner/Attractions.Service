@@ -9,9 +9,9 @@ namespace Attractions.Processor
 {
     public interface IListingProcessor
     {
-        Task<object> GetAllListingsAsync();
+        Task<IEnumerable<Listing>> GetAllListingsAsync();
 
-        Task<object> GetListingByIdAsync(int id);
+        Task<Listing> GetListingByIdAsync(int id);
 
         Task InsertListingAsync(Listing listing);
 

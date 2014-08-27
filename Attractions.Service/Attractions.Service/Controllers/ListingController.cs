@@ -16,34 +16,36 @@ namespace Attractions.Service.Controllers
         {
             this.listingProcessor = _listingProcessor;
         }
-        public async Task<HttpResponseMessage> GetAsync()
+        public async Task<IHttpActionResult> GetAsync()
         {
             var content = await this.listingProcessor.GetAllListingsAsync();
-            return Request.CreateResponse(HttpStatusCode.OK, content);
+            return Ok(content);
         }
 
-        public async Task<HttpResponseMessage> GetAsync(int id)
+        public async Task<IHttpActionResult> GetAsync(int id)
         {
             var content = await this.listingProcessor.GetListingByIdAsync(id);
-            return Request.CreateResponse(HttpStatusCode.OK, content);
+            if (content == null)
+                return NotFound();
+            return Ok(content);
         }
 
-        public async Task<HttpResponseMessage> PostAsync([FromBody]Listing listing)
+        public async Task<IHttpActionResult> PostAsync([FromBody]Listing listing)
         {
             await this.listingProcessor.InsertListingAsync(listing);
-            return Request.CreateResponse(HttpStatusCode.OK, listing);
+            return Created(Request.RequestUri, listing);
         }
 
-        public async Task<HttpResponseMessage> PutAsync(int id, [FromBody]Listing listing)
+        public async Task<IHttpActionResult> PutAsync(int id, [FromBody]Listing listing)
         {
             await this.listingProcessor.UpdateListingAsync(listing);
-            return Request.CreateResponse(HttpStatusCode.OK, listing);
+            return Created(Request.RequestUri,listing);
         }
 
-        public async Task<HttpResponseMessage> DeleteAsync(int id)
+        public async Task<IHttpActionResult> DeleteAsync(int id)
         {
             await this.listingProcessor.DeleteListingAsync(id);
-            return Request.CreateResponse(HttpStatusCode.OK, id);
+            return Ok(id);
         }
     }
 }

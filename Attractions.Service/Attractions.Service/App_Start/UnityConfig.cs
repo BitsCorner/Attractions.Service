@@ -1,4 +1,5 @@
-﻿using BitsCorner.Logging;
+﻿using Attractions.Processor;
+using BitsCorner.Logging;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Attractions.Service
             var container = new UnityContainer();
             
             container.RegisterType<ILogger, Logger>(new HierarchicalLifetimeManager());
+            container.RegisterType<IListingProcessor, ListingProcessor>();
 
             config.DependencyResolver = new UnityResolver(container);
         }
