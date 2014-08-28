@@ -24,6 +24,11 @@ namespace Attractions.Service.Controllers
             return Ok(content);
         }
 
+        /// <summary>
+        /// This returns a single item based on the given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IHttpActionResult> GetAsync(int id)
         {
             var content = await this.listingProcessor.GetListingByIdAsync(id);
