@@ -12,10 +12,12 @@ namespace Attractions.Service.Controllers
     public class ListingController : BaseController
     {
         private IListingProcessor listingProcessor;
+        
         public ListingController(IListingProcessor _listingProcessor)
         {
             this.listingProcessor = _listingProcessor;
         }
+
         public async Task<IHttpActionResult> GetAsync()
         {
             var content = await this.listingProcessor.GetAllListingsAsync();
@@ -32,8 +34,15 @@ namespace Attractions.Service.Controllers
 
         public async Task<IHttpActionResult> PostAsync([FromBody]Listing listing)
         {
-            await this.listingProcessor.InsertListingAsync(listing);
-            return Created(Request.RequestUri, listing);
+            var newListing = await this.listingProcessor.InsertListingAsync(listing);
+            if (newListing != null)
+            {
+                return Created<Listing>(Request.RequestUri + newListing.ListingId.ToString(), newListing);
+            }
+            else
+            {
+                return Conflict();
+            }
         }
 
         public async Task<IHttpActionResult> PutAsync(int id, [FromBody]Listing listing)

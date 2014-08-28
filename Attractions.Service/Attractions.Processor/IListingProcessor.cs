@@ -13,9 +13,9 @@ namespace Attractions.Processor
 
         Task<Listing> GetListingByIdAsync(int id);
 
-        Task InsertListingAsync(Listing listing);
+        Task<Listing> InsertListingAsync(Listing listing);
 
-        Task UpdateListingAsync(Listing listing);
+        Task<Listing> UpdateListingAsync(Listing listing);
 
         Task DeleteListingAsync(int id);
     }

@@ -17,18 +17,25 @@ namespace Attractions.Processor
         }
 
         public async Task<IEnumerable<Listing>> GetAllListingsAsync()
-        {   var result = await unitOfWork.ListingRepository.GetAsync();
+        {   
+            var result = await unitOfWork.ListingRepository.GetAsync();
             return EntityMapper.Map(result);
         }
 
-        public Task InsertListingAsync(Listing listing)
+        public async Task<Listing> InsertListingAsync(Listing listing)
         {
-            throw new NotImplementedException();
+            var contextListing = EntityMapper.Map(listing);
+            await unitOfWork.ListingRepository.InsertAsync(contextListing);
+            await unitOfWork.SaveAsync();
+            return listing;
         }
 
-        public Task UpdateListingAsync(Listing listing)
+        public async Task<Listing> UpdateListingAsync(Listing listing)
         {
-            throw new NotImplementedException();
+            var contextListing = EntityMapper.Map(listing);
+            await unitOfWork.ListingRepository.UpdateAsync(contextListing);
+            await unitOfWork.SaveAsync();
+            return listing;
         }
 
         public Task DeleteListingAsync(int id)

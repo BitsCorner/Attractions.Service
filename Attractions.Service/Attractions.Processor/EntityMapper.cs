@@ -10,7 +10,7 @@ namespace Attractions.Processor
     internal class EntityMapper
     {
 
-        public static IEnumerable<Listing> Map(IEnumerable<Repository.Models.Listing> listings)
+        internal static IEnumerable<Listing> Map(IEnumerable<Repository.Models.Listing> listings)
         {
             if (listings == null)
                 return null;
@@ -33,7 +33,7 @@ namespace Attractions.Processor
                    };
         }
 
-        public static IEnumerable<UsageType> Map(IEnumerable<Repository.Models.UsageType> usageTypes)
+        internal static IEnumerable<UsageType> Map(IEnumerable<Repository.Models.UsageType> usageTypes)
         {
             if (usageTypes == null)
                 return null;
@@ -46,7 +46,7 @@ namespace Attractions.Processor
                    };
         }
 
-        public static Category Map(Repository.Models.Category category)
+        internal static Category Map(Repository.Models.Category category)
         {
             if (category == null)
                 return null;
@@ -57,7 +57,7 @@ namespace Attractions.Processor
             };
         }
 
-        public static Location Map(Repository.Models.Location location)
+        internal static Location Map(Repository.Models.Location location)
         {
             if (location == null)
                 return null;
@@ -70,7 +70,7 @@ namespace Attractions.Processor
             };
         }
 
-        public static Locale Map(Repository.Models.Locale locale)
+        internal static Locale Map(Repository.Models.Locale locale)
         {
             if (locale == null)
                 return null;
@@ -81,5 +81,9 @@ namespace Attractions.Processor
             };
         }
 
+        internal static Repository.Models.Listing Map(Listing listing)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
