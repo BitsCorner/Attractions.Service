@@ -224,9 +224,9 @@
       <Project>{72c5b82a-a7aa-480a-9fb9-2d4b1af72c0e}</Project>
       <Name>Attractions.Processor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BitsCorner.Logging\BitsCorner.Logging.csproj">
+    <ProjectReference Include="..\BitsCorner.Logging\Attractions.Service.Logging.csproj">
       <Project>{e9eaaace-ddf9-41ba-a024-32ff06a7ab47}</Project>
-      <Name>BitsCorner.Logging</Name>
+      <Name>Attractions.Service.Logging</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Threading.Tasks;
 using Attractions.Processor;
 using Attractions.Contracts;
+using Attractions.Service.Logging;
 namespace Attractions.Service.Controllers
 {
     public class ListingController : BaseController
@@ -31,6 +32,7 @@ namespace Attractions.Service.Controllers
         /// <returns></returns>
         public async Task<IHttpActionResult> GetAsync(int id)
         {
+            
             var content = await this.listingProcessor.GetListingByIdAsync(id);
             if (content == null)
                 return NotFound();

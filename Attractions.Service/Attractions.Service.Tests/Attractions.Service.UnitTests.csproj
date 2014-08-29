@@ -121,9 +121,9 @@
       <Project>{058E8175-DAF9-41C0-9222-B0910B7022C0}</Project>
       <Name>Attractions.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BitsCorner.Logging\BitsCorner.Logging.csproj">
+    <ProjectReference Include="..\BitsCorner.Logging\Attractions.Service.Logging.csproj">
       <Project>{e9eaaace-ddf9-41ba-a024-32ff06a7ab47}</Project>
-      <Name>BitsCorner.Logging</Name>
+      <Name>Attractions.Service.Logging</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

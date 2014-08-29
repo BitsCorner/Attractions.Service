@@ -21,6 +21,6 @@ namespace Attractions.Repository.Models
         public decimal Views { get; set; }
         public Location Location { get; set; } // This is google place_id
         public Category Category { get; set; }
-        public IEnumerable<UsageType> UsageTypes { get; set; }
+        public ICollection<UsageType> UsageTypes { get; set; }
     }
 }

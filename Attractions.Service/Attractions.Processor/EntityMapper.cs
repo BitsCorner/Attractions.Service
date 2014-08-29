@@ -81,9 +81,31 @@ namespace Attractions.Processor
             };
         }
 
-        internal static Repository.Models.Listing Map(Listing listing)
+        internal static Repository.Models.Listing Map(Listing ContractListing)
         {
             throw new NotImplementedException();
+        }
+
+        internal static Listing Map(Repository.Models.Listing listing)
+        {
+            if (listing == null)
+                return null;
+
+            return new Listing
+                   {
+                       ListingId = listing.ListingId,
+                       Title = listing.Title,
+                       ShortDescription = listing.ShortDescription,
+                       LongDescription = listing.LongDescription,
+                       Locale = Map(listing.Locale),
+                       UserRating = listing.UserRating,
+                       Ranking = listing.Ranking,
+                       PromoRank = listing.PromoRank,
+                       Views = listing.Views,
+                       Location = Map(listing.Location),
+                       Category = Map(listing.Category),
+                       UsageTypes = Map(listing.UsageTypes)
+                   };
         }
     }
 }

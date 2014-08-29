@@ -15,7 +15,6 @@ namespace Attractions.Service
         {
             var container = new UnityContainer();
             
-            container.RegisterType<ILogger, Logger>(new HierarchicalLifetimeManager());
             container.RegisterType<IListingProcessor, ListingProcessor>();
 
             config.DependencyResolver = new UnityResolver(container);

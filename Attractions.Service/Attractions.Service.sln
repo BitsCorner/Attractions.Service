@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Service.Integra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Processor", "Attractions.Processor\Attractions.Processor.csproj", "{72C5B82A-A7AA-480A-9FB9-2D4B1AF72C0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitsCorner.Logging", "BitsCorner.Logging\BitsCorner.Logging.csproj", "{E9EAAACE-DDF9-41BA-A024-32FF06A7AB47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Service.Logging", "BitsCorner.Logging\Attractions.Service.Logging.csproj", "{E9EAAACE-DDF9-41BA-A024-32FF06A7AB47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Contracts", "Attractions.Contracts\Attractions.Contracts.csproj", "{3785A39D-B68A-4A80-8E9B-22B87D855C53}"
 EndProject

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Attractions.Service.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,6 +16,7 @@ namespace Attractions.Service
     {
         protected void Application_Start()
         {
+            Logger.Log.Startup();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             UnityConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterWebApiFilters(GlobalConfiguration.Configuration.Filters);
