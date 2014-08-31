@@ -7,7 +7,6 @@ using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Attractions.Service;
 using Attractions.Service.Controllers;
-using Attractions.Repository.Models;
 
 namespace Attractions.Service.Tests.Controllers
 {

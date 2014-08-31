@@ -1,5 +1,4 @@
-﻿using Attractions.Repository.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,28 +8,28 @@ namespace Attractions.Repository
 {
     public class UnitOfWork : IDisposable
     {
-        private AttractionsContext context = new AttractionsContext();
-        private GenericRepository<Category> categoryRepository;
-        private GenericRepository<Listing> listingRepository;
+        private AttractionsEntities context = new AttractionsEntities();
+        private GenericRepository<AttractionsCategory> categoryRepository;
+        private GenericRepository<AttractionsListing> listingRepository;
 
-        public GenericRepository<Category> CategoryRepository
+        public GenericRepository<AttractionsCategory> CategoryRepository
         {
             get
             {
                 if (this.categoryRepository == null)
                 {
-                    this.categoryRepository = new GenericRepository<Category>(context);
+                    this.categoryRepository = new GenericRepository<AttractionsCategory>(context);
                 }
                 return categoryRepository;
             }
         }
-        public GenericRepository<Listing> ListingRepository
+        public GenericRepository<AttractionsListing> ListingRepository
         {
             get
             {
                 if (this.listingRepository == null)
                 {
-                    this.listingRepository = new GenericRepository<Listing>(context);
+                    this.listingRepository = new GenericRepository<AttractionsListing>(context);
                 }
                 return listingRepository;
             }

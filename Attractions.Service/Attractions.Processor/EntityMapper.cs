@@ -10,7 +10,7 @@ namespace Attractions.Processor
     internal class EntityMapper
     {
 
-        internal static IEnumerable<Listing> Map(IEnumerable<Repository.Models.Listing> listings)
+        internal static IEnumerable<Listing> Map(IEnumerable<Repository.AttractionsListing> listings)
         {
             if (listings == null)
                 return null;
@@ -22,18 +22,18 @@ namespace Attractions.Processor
                        Title = item.Title,
                        ShortDescription = item.ShortDescription,
                        LongDescription = item.LongDescription,
-                       Locale = Map(item.Locale),
+                       //Locale = Map(item.Locale),
                        UserRating = item.UserRating,
                        Ranking = item.Ranking,
-                       PromoRank = item.PromoRank,
-                       Views = item.Views,
-                       Location = Map(item.Location),
-                       Category = Map(item.Category),
-                       UsageTypes = Map(item.UsageTypes)
+                       PromoRank = item.PromoRanking,
+                       //Views = item.Views,
+                       Location = Map(item.AttractionsLocation),
+                       Category = Map(item.AttractionsCategory),
+                       UsageTypes = Map(item.AttractionsUsageTypes)
                    };
         }
 
-        internal static IEnumerable<UsageType> Map(IEnumerable<Repository.Models.UsageType> usageTypes)
+        internal static IEnumerable<UsageType> Map(IEnumerable<Repository.AttractionsUsageType> usageTypes)
         {
             if (usageTypes == null)
                 return null;
@@ -46,7 +46,7 @@ namespace Attractions.Processor
                    };
         }
 
-        internal static Category Map(Repository.Models.Category category)
+        internal static Category Map(Repository.AttractionsCategory category)
         {
             if (category == null)
                 return null;
@@ -57,7 +57,7 @@ namespace Attractions.Processor
             };
         }
 
-        internal static Location Map(Repository.Models.Location location)
+        internal static Location Map(Repository.AttractionsLocation location)
         {
             if (location == null)
                 return null;
@@ -70,23 +70,23 @@ namespace Attractions.Processor
             };
         }
 
-        internal static Locale Map(Repository.Models.Locale locale)
-        {
-            if (locale == null)
-                return null;
-            return new Locale
-            {
-                LocaleId = locale.LocaleId,
-                LocaleName = locale.LocaleName
-            };
-        }
+        //internal static Locale Map(Repository.Models.Locale locale)
+        //{
+        //    if (locale == null)
+        //        return null;
+        //    return new Locale
+        //    {
+        //        LocaleId = locale.LocaleId,
+        //        LocaleName = locale.LocaleName
+        //    };
+        //}
 
-        internal static Repository.Models.Listing Map(Listing ContractListing)
+        internal static Repository.AttractionsListing Map(Listing ContractListing)
         {
             throw new NotImplementedException();
         }
 
-        internal static Listing Map(Repository.Models.Listing listing)
+        internal static Listing Map(Repository.AttractionsListing listing)
         {
             if (listing == null)
                 return null;
@@ -97,14 +97,14 @@ namespace Attractions.Processor
                        Title = listing.Title,
                        ShortDescription = listing.ShortDescription,
                        LongDescription = listing.LongDescription,
-                       Locale = Map(listing.Locale),
+                       //Locale = Map(listing.Locale),
                        UserRating = listing.UserRating,
                        Ranking = listing.Ranking,
-                       PromoRank = listing.PromoRank,
-                       Views = listing.Views,
-                       Location = Map(listing.Location),
-                       Category = Map(listing.Category),
-                       UsageTypes = Map(listing.UsageTypes)
+                       PromoRank = listing.PromoRanking,
+                       //Views = listing.Views,
+                       Location = Map(listing.AttractionsLocation),
+                       Category = Map(listing.AttractionsCategory),
+                       UsageTypes = Map(listing.AttractionsUsageTypes)
                    };
         }
     }
