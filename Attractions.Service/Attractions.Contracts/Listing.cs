@@ -15,5 +15,6 @@ namespace Attractions.Contracts
         public Location Location { get; set; } // This is google place_id
         public Category Category { get; set; }
         public IEnumerable<UsageType> UsageTypes { get; set; }
+        public Status Status { get; set; }
     }
 }

@@ -57,6 +57,7 @@
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\ListingVideo.cs" />
     <Compile Include="Models\ListingPicture.cs" />
     <Compile Include="Models\Listing.cs" />

@@ -18,7 +18,7 @@ namespace Attractions.Processor
 
         public async Task<IEnumerable<Listing>> GetAllListingsAsync()
         {
-            var result = await unitOfWork.ListingRepository.GetAsync(includeProperties: "Location,Category,Locale,UsageTypes");
+            var result = await unitOfWork.ListingRepository.GetAsync(includeProperties: "Location,Category,Locale,UsageTypes,Status");
             return EntityMapper.Map(result);
         }
 
@@ -45,10 +45,9 @@ namespace Attractions.Processor
 
         public async Task<Listing> GetListingByIdAsync(int id)
         {
-            var ContractListing = await unitOfWork.ListingRepository.GetAsync(filter: m => m.ListingId == id, includeProperties: "Location,Category,Locale,UsageTypes");
+            var ContractListing = await unitOfWork.ListingRepository.GetAsync(filter: m => m.ListingId == id, includeProperties: "Location,Category,Locale,UsageTypes,Status");
             return EntityMapper.Map(ContractListing.FirstOrDefault());
         }
-
 
     }
 }

@@ -22,5 +22,6 @@ namespace Attractions.Repository.Models
         public Location Location { get; set; } // This is google place_id
         public Category Category { get; set; }
         public ICollection<UsageType> UsageTypes { get; set; }
+        public Status Status { get; set; }
     }
 }
