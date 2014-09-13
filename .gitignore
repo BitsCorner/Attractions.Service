@@ -213,3 +213,4 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 Attractions.Service/Attractions.Service/Web.config
+Attractions.Service/Attractions.Service/Configs/ConnectionStrings.config
