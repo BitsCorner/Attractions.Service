@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.22013.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Service", "Attractions.Service\Attractions.Service.csproj", "{058E8175-DAF9-41C0-9222-B0910B7022C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attractions.Service.UnitTests", "Attractions.Service.Tests\Attractions.Service.UnitTests.csproj", "{BFFF4703-5359-45C5-B4D7-D68E461833EC}"

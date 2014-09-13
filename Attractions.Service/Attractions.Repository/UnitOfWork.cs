@@ -11,6 +11,7 @@ namespace Attractions.Repository
         private AttractionsEntities context = new AttractionsEntities();
         private GenericRepository<AttractionsCategory> categoryRepository;
         private GenericRepository<AttractionsListing> listingRepository;
+        private GenericRepository<AttractionsUsageType> usageTypeRepository;
 
         public GenericRepository<AttractionsCategory> CategoryRepository
         {
@@ -32,6 +33,17 @@ namespace Attractions.Repository
                     this.listingRepository = new GenericRepository<AttractionsListing>(context);
                 }
                 return listingRepository;
+            }
+        }
+        public GenericRepository<AttractionsUsageType> UsageTypeRepository
+        {
+            get
+            {
+                if (this.usageTypeRepository == null)
+                {
+                    this.usageTypeRepository = new GenericRepository<AttractionsUsageType>(context);
+                }
+                return usageTypeRepository;
             }
         }
 

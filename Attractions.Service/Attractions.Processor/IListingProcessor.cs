@@ -18,5 +18,9 @@ namespace Attractions.Processor
         Task<Listing> UpdateListingAsync(Listing listing);
 
         Task DeleteListingAsync(int id);
+
+        Task<IEnumerable<Category>> GetCategoriesAsync();
+
+        Task<IEnumerable<UsageType>> GetUsageTypesAsync();
     }
 }

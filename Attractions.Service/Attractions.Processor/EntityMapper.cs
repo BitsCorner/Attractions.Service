@@ -46,6 +46,19 @@ namespace Attractions.Processor
                    };
         }
 
+        internal static IEnumerable<Category> Map(IEnumerable<Repository.AttractionsCategory> categories)
+        {
+            if (categories == null)
+                return null;
+
+            return from item in categories
+                   select new Category
+                   {
+                       CategoryId = item.CategoryId,
+                       CategoryName = item.CategoryName
+                   };
+        }
+
         internal static Category Map(Repository.AttractionsCategory category)
         {
             if (category == null)

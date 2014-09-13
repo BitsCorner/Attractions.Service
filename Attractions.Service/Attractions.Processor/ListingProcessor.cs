@@ -18,7 +18,8 @@ namespace Attractions.Processor
 
         public async Task<IEnumerable<Listing>> GetAllListingsAsync()
         {
-            var result = await unitOfWork.ListingRepository.GetAsync(includeProperties: "Location,Category,Locale,UsageTypes,Status");
+            var result = await unitOfWork.ListingRepository.GetAsync();
+            //includeProperties: "Location,Category,Locale,UsageTypes,Status"
             return EntityMapper.Map(result);
         }
 
@@ -49,5 +50,16 @@ namespace Attractions.Processor
             return EntityMapper.Map(ContractListing.FirstOrDefault());
         }
 
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
+        {
+            var result = await unitOfWork.CategoryRepository.GetAsync();
+            return EntityMapper.Map(result);
+        }
+
+        public async Task<IEnumerable<UsageType>> GetUsageTypesAsync()
+        {
+            var result = await unitOfWork.UsageTypeRepository.GetAsync();
+            return EntityMapper.Map(result);
+        }
     }
 }
