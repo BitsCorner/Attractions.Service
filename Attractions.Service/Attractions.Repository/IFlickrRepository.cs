@@ -8,5 +8,9 @@ namespace Attractions.Repository
 {
     public interface IFlickrRepository
     {
+        Task AddPicture();
+        Task UpdatePicture();
+        Task GetPictures();
+        Task AddPictureSet();
     }
 }
