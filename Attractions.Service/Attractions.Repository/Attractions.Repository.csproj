@@ -74,6 +74,8 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GenericRepository.cs" />
+    <Compile Include="IYouTubeRepository.cs" />
+    <Compile Include="IFlickrRepository.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
