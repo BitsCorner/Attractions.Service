@@ -90,13 +90,17 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="FlickrManager.cs" />
+    <Compile Include="GoogleRepository.cs" />
+    <Compile Include="HttpClientHelper.cs" />
+    <Compile Include="Interfaces\IGoogleRepository.cs" />
+    <Compile Include="Interfaces\IHttpClientHelper.cs" />
     <Compile Include="PicasaRepository.cs" />
     <Compile Include="FlickrRepository.cs" />
     <Compile Include="GenericRepository.cs" />
-    <Compile Include="IPicasaRepository.cs" />
-    <Compile Include="IYouTubeRepository.cs" />
-    <Compile Include="IFlickrRepository.cs" />
-    <Compile Include="IGenericRepository.cs" />
+    <Compile Include="Interfaces\IPicasaRepository.cs" />
+    <Compile Include="Interfaces\IYouTubeRepository.cs" />
+    <Compile Include="Interfaces\IFlickrRepository.cs" />
+    <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

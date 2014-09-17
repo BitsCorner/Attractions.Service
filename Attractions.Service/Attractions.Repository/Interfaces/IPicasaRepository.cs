@@ -10,5 +10,6 @@ namespace Attractions.Repository
     public interface IPicasaRepository
     {
         string AddPicture();
+        string GetPictures();
     }
 }
