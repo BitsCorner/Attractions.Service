@@ -9,7 +9,7 @@ namespace Attractions.Service
         public static void RegisterWebApiFilters(HttpFilterCollection filters)
         {
             filters.Add(new ValidationFilter());
-            filters.Add(new ExceptionFilter());
+            //filters.Add(new ExceptionFilter());
         }
 
     }

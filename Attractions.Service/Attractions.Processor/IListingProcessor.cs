@@ -1,4 +1,6 @@
-﻿using Attractions.Contracts;
+﻿using Attractions.Contracts.Requests;
+using Attractions.Contracts.Responses;
+using Attractions.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +11,12 @@ namespace Attractions.Processor
 {
     public interface IListingProcessor
     {
-        Task<IEnumerable<Listing>> GetAllListingsAsync();
+        Task<IEnumerable<ListingResponse>> GetAllListingsAsync();
 
-        Task<Listing> GetListingByIdAsync(int id);
+        Task<ListingResponse> InsertListingAsync(ListingRequest listing);
 
-        Task<Listing> InsertListingAsync(Listing listing);
+        Task<IEnumerable<CategoryResponse>> GetCategoriesAsync();
 
-        Task<Listing> UpdateListingAsync(Listing listing);
-
-        Task DeleteListingAsync(int id);
-
-        Task<IEnumerable<Category>> GetCategoriesAsync();
-
-        Task<IEnumerable<UsageType>> GetUsageTypesAsync();
+        Task<IEnumerable<UsageTypeResponse>> GetUsageTypesAsync();
     }
 }

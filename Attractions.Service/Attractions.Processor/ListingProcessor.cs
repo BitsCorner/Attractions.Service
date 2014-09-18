@@ -1,4 +1,6 @@
 ﻿using Attractions.Contracts;
+using Attractions.Contracts.Requests;
+using Attractions.Contracts.Responses;
 using Attractions.Repository;
 using System;
 using System.Collections.Generic;
@@ -16,47 +18,35 @@ namespace Attractions.Processor
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Listing>> GetAllListingsAsync()
+        public async Task<IEnumerable<ListingResponse>> GetAllListingsAsync()
         {
             var result = await unitOfWork.ListingRepository.GetAsync();
             //includeProperties: "Location,Category,Locale,UsageTypes,Status"
             return EntityMapper.Map(result);
         }
 
-        public async Task<Listing> InsertListingAsync(Listing listing)
+        public async Task<ListingResponse> InsertListingAsync(ListingRequest listing)
         {
             var contextListing = EntityMapper.Map(listing);
-            await unitOfWork.ListingRepository.InsertAsync(contextListing);
-            await unitOfWork.SaveAsync();
-            return listing;
+            try
+            {
+                await unitOfWork.ListingRepository.InsertAsync(contextListing);
+                await unitOfWork.SaveAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return EntityMapper.Map(contextListing);
         }
 
-        public async Task<Listing> UpdateListingAsync(Listing listing)
-        {
-            var contextListing = EntityMapper.Map(listing);
-            await unitOfWork.ListingRepository.UpdateAsync(contextListing);
-            await unitOfWork.SaveAsync();
-            return listing;
-        }
-
-        public async Task DeleteListingAsync(int id)
-        {
-            await unitOfWork.ListingRepository.DeleteAsync(id);
-        }
-
-        public async Task<Listing> GetListingByIdAsync(int id)
-        {
-            var ContractListing = await unitOfWork.ListingRepository.GetAsync(filter: m => m.ListingId == id, includeProperties: "Location,Category,Locale,UsageTypes,Status");
-            return EntityMapper.Map(ContractListing.FirstOrDefault());
-        }
-
-        public async Task<IEnumerable<Category>> GetCategoriesAsync()
+        public async Task<IEnumerable<CategoryResponse>> GetCategoriesAsync()
         {
             var result = await unitOfWork.CategoryRepository.GetAsync();
             return EntityMapper.Map(result);
         }
 
-        public async Task<IEnumerable<UsageType>> GetUsageTypesAsync()
+        public async Task<IEnumerable<UsageTypeResponse>> GetUsageTypesAsync()
         {
             var result = await unitOfWork.UsageTypeRepository.GetAsync();
             return EntityMapper.Map(result);

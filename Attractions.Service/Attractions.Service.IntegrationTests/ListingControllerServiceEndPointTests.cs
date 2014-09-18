@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Attractions.Contracts;
+using Attractions.Contracts.Requests;
+using Attractions.Contracts.Responses;
 
 namespace Attractions.Service.IntegrationTests
 {
@@ -34,7 +36,7 @@ namespace Attractions.Service.IntegrationTests
                 HttpResponseMessage response = await client.GetAsync(ListingController_GetAsync_Uri);
                 if (response.IsSuccessStatusCode)
                 {
-                    Listing listing = await response.Content.ReadAsAsync<Listing>();
+                    ListingRequest listing = await response.Content.ReadAsAsync<ListingRequest>();
                 }
             }
         }
@@ -47,7 +49,7 @@ namespace Attractions.Service.IntegrationTests
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var lisitng = new Listing() { ShortDescription = "", Title = "" };
+                var lisitng = new ListingRequest() { ShortDescription = "", Title = "" };
                 var response = await client.PostAsJsonAsync(ListingController_PostAsync_Uri, lisitng);
                 if (response.IsSuccessStatusCode)
                 {

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Attractions.Processor;
 using Attractions.Contracts;
 using Attractions.Service.Logging;
+using Attractions.Contracts.Requests;
+using Attractions.Contracts.Responses;
+
 namespace Attractions.Service.Controllers
 {
     public class ListingController : BaseController
@@ -32,19 +35,19 @@ namespace Attractions.Service.Controllers
         /// <returns></returns>
         public async Task<IHttpActionResult> GetAsync(int id)
         {
-            
-            var content = await this.listingProcessor.GetListingByIdAsync(id);
-            if (content == null)
-                return NotFound();
-            return Ok(content);
+            return null;
+            //var content = await this.listingProcessor.GetListingByIdAsync(id);
+            //if (content == null)
+            //    return NotFound();
+            //return Ok(content);
         }
 
-        public async Task<IHttpActionResult> PostAsync([FromBody]Listing listing)
+        public async Task<IHttpActionResult> PostAsync([FromBody]ListingRequest listing)
         {
             var newListing = await this.listingProcessor.InsertListingAsync(listing);
             if (newListing != null)
             {
-                return Created<Listing>(Request.RequestUri + newListing.ListingId.ToString(), newListing);
+                return Created<ListingResponse>(Request.RequestUri, newListing);
             }
             else
             {
@@ -52,16 +55,18 @@ namespace Attractions.Service.Controllers
             }
         }
 
-        public async Task<IHttpActionResult> PutAsync(int id, [FromBody]Listing listing)
+        public async Task<IHttpActionResult> PutAsync(int id, [FromBody]ListingRequest listing)
         {
-            await this.listingProcessor.UpdateListingAsync(listing);
-            return Created(Request.RequestUri,listing);
+            //await this.listingProcessor.UpdateListingAsync(listing);
+            //return Created(Request.RequestUri,listing);
+            return null;
         }
 
         public async Task<IHttpActionResult> DeleteAsync(int id)
         {
-            await this.listingProcessor.DeleteListingAsync(id);
-            return Ok(id);
+            //await this.listingProcessor.DeleteListingAsync(id);
+            //return Ok(id);
+            return null;
         }
     }
 }

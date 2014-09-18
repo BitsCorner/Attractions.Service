@@ -36,27 +36,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="FlickrNet">
-      <HintPath>..\packages\FlickrNet.3.14.0\lib\net20\FlickrNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.GData.Client">
-      <HintPath>..\packages\Google.GData.Client.2.2.0.0\lib\Google.GData.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.GData.Extensions">
-      <HintPath>..\packages\Google.GData.Extensions.2.2.0.0\lib\Google.GData.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.GData.Photos">
-      <HintPath>..\packages\Google.GData.Photos.2.2.0.0\lib\Google.GData.Photos.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
-      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling">
-      <HintPath>..\packages\EnterpriseLibrary.ExceptionHandling.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -89,17 +71,14 @@
     <Compile Include="AttractionsUsageType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="FlickrManager.cs" />
     <Compile Include="GoogleRepository.cs" />
     <Compile Include="HttpClientHelper.cs" />
     <Compile Include="Interfaces\IGoogleRepository.cs" />
     <Compile Include="Interfaces\IHttpClientHelper.cs" />
     <Compile Include="PicasaRepository.cs" />
-    <Compile Include="FlickrRepository.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="Interfaces\IPicasaRepository.cs" />
     <Compile Include="Interfaces\IYouTubeRepository.cs" />
-    <Compile Include="Interfaces\IFlickrRepository.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -125,7 +104,6 @@
       <LastGenOutput>AttractionsModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="App.Config" />
-    <None Include="FlickrNet.chm" />
     <None Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AttractionsModel.edmx</DependentUpon>
@@ -143,6 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Attractions.Contracts\Attractions.Contracts.csproj">
+      <Project>{3785a39d-b68a-4a80-8e9b-22b87d855c53}</Project>
+      <Name>Attractions.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
