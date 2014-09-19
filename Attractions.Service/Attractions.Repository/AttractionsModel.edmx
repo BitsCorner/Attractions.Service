@@ -4,55 +4,27 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AttractionsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="AttractionsModelStoreContainer">
-          <EntitySet Name="AttractionsCategory" EntityType="AttractionsModel.Store.AttractionsCategory" store:Type="Tables" Schema="Aram" />
-          <EntitySet Name="AttractionsListing" EntityType="AttractionsModel.Store.AttractionsListing" store:Type="Tables" Schema="Aram" />
-          <EntitySet Name="AttractionsListingUsageType" EntityType="AttractionsModel.Store.AttractionsListingUsageType" store:Type="Tables" Schema="Aram" />
-          <EntitySet Name="AttractionsLocation" EntityType="AttractionsModel.Store.AttractionsLocation" store:Type="Tables" Schema="Aram" />
-          <EntitySet Name="AttractionsStatus" EntityType="AttractionsModel.Store.AttractionsStatus" store:Type="Tables" Schema="Aram" />
-          <EntitySet Name="AttractionsUsageType" EntityType="AttractionsModel.Store.AttractionsUsageType" store:Type="Tables" Schema="Aram" />
-          <AssociationSet Name="FK_AttractionsListing_AttractionsCategory" Association="AttractionsModel.Store.FK_AttractionsListing_AttractionsCategory">
-            <End Role="AttractionsCategory" EntitySet="AttractionsCategory" />
-            <End Role="AttractionsListing" EntitySet="AttractionsListing" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AttractionsListing_AttractionsLocation" Association="AttractionsModel.Store.FK_AttractionsListing_AttractionsLocation">
-            <End Role="AttractionsLocation" EntitySet="AttractionsLocation" />
-            <End Role="AttractionsListing" EntitySet="AttractionsListing" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AttractionsListing_AttractionsStatus" Association="AttractionsModel.Store.FK_AttractionsListing_AttractionsStatus">
-            <End Role="AttractionsStatus" EntitySet="AttractionsStatus" />
-            <End Role="AttractionsListing" EntitySet="AttractionsListing" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AttractionsListingUsageType_AttractionsListing" Association="AttractionsModel.Store.FK_AttractionsListingUsageType_AttractionsListing">
-            <End Role="AttractionsListing" EntitySet="AttractionsListing" />
-            <End Role="AttractionsListingUsageType" EntitySet="AttractionsListingUsageType" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AttractionsListingUsageType_AttractionsUsageType" Association="AttractionsModel.Store.FK_AttractionsListingUsageType_AttractionsUsageType">
-            <End Role="AttractionsUsageType" EntitySet="AttractionsUsageType" />
-            <End Role="AttractionsListingUsageType" EntitySet="AttractionsListingUsageType" />
-          </AssociationSet>
-        </EntityContainer>
+    <Schema Namespace="AttractionsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AttractionsCategory">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
           <Property Name="CategoryId" Type="int" Nullable="false" />
-          <Property Name="CategoryName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="AttractionsListing">
           <Key>
             <PropertyRef Name="ListingId" />
           </Key>
-          <Property Name="ListingId" Type="bigint" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="500" />
-          <Property Name="ShortDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="ListingId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ShortDescription" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="LongDescription" Type="nvarchar" MaxLength="500" />
           <Property Name="UserRating" Type="int" />
           <Property Name="Ranking" Type="int" />
           <Property Name="PromoRanking" Type="int" />
-          <Property Name="LocationId" Type="int" />
-          <Property Name="CategoryId" Type="int" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="StatusId" Type="int" />
           <Property Name="CreatedOn" Type="date" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
@@ -71,19 +43,21 @@
           <Key>
             <PropertyRef Name="LocationId" />
           </Key>
-          <Property Name="LocationId" Type="int" Nullable="false" />
-          <Property Name="place_id" Type="nvarchar" Nullable="false" MaxLength="1000" />
-          <Property Name="short_name" Type="nvarchar" MaxLength="500" />
-          <Property Name="long_name" Type="nvarchar" MaxLength="1000" />
-          <Property Name="alt" Type="nvarchar" MaxLength="500" />
-          <Property Name="types" Type="nvarchar" MaxLength="1000" />
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="place_id" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="500" />
+          <Property Name="reference" Type="nvarchar(max)" />
+          <Property Name="formatted_address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="url" Type="nvarchar" MaxLength="1000" />
+          <Property Name="adr_address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="id" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="AttractionsStatus">
           <Key>
             <PropertyRef Name="StatusId" />
           </Key>
           <Property Name="StatusId" Type="int" Nullable="false" />
-          <Property Name="StatusName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsPublished" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="AttractionsUsageType">
@@ -91,14 +65,14 @@
             <PropertyRef Name="UsageTypeId" />
           </Key>
           <Property Name="UsageTypeId" Type="int" Nullable="false" />
-          <Property Name="UsageTypeName" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="UsageTypeName" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="FromAge" Type="nvarchar" MaxLength="100" />
           <Property Name="ToAge" Type="nvarchar" MaxLength="100" />
           <Property Name="MenWomenAllowed" Type="int" />
         </EntityType>
         <Association Name="FK_AttractionsListing_AttractionsCategory">
-          <End Role="AttractionsCategory" Type="AttractionsModel.Store.AttractionsCategory" Multiplicity="0..1" />
-          <End Role="AttractionsListing" Type="AttractionsModel.Store.AttractionsListing" Multiplicity="*" />
+          <End Role="AttractionsCategory" Type="Self.AttractionsCategory" Multiplicity="1" />
+          <End Role="AttractionsListing" Type="Self.AttractionsListing" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AttractionsCategory">
               <PropertyRef Name="CategoryId" />
@@ -109,8 +83,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AttractionsListing_AttractionsLocation">
-          <End Role="AttractionsLocation" Type="AttractionsModel.Store.AttractionsLocation" Multiplicity="0..1" />
-          <End Role="AttractionsListing" Type="AttractionsModel.Store.AttractionsListing" Multiplicity="*" />
+          <End Role="AttractionsLocation" Type="Self.AttractionsLocation" Multiplicity="1" />
+          <End Role="AttractionsListing" Type="Self.AttractionsListing" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AttractionsLocation">
               <PropertyRef Name="LocationId" />
@@ -121,8 +95,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AttractionsListing_AttractionsStatus">
-          <End Role="AttractionsStatus" Type="AttractionsModel.Store.AttractionsStatus" Multiplicity="0..1" />
-          <End Role="AttractionsListing" Type="AttractionsModel.Store.AttractionsListing" Multiplicity="*" />
+          <End Role="AttractionsStatus" Type="Self.AttractionsStatus" Multiplicity="0..1" />
+          <End Role="AttractionsListing" Type="Self.AttractionsListing" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AttractionsStatus">
               <PropertyRef Name="StatusId" />
@@ -133,8 +107,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AttractionsListingUsageType_AttractionsListing">
-          <End Role="AttractionsListing" Type="AttractionsModel.Store.AttractionsListing" Multiplicity="1" />
-          <End Role="AttractionsListingUsageType" Type="AttractionsModel.Store.AttractionsListingUsageType" Multiplicity="*" />
+          <End Role="AttractionsListing" Type="Self.AttractionsListing" Multiplicity="1" />
+          <End Role="AttractionsListingUsageType" Type="Self.AttractionsListingUsageType" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AttractionsListing">
               <PropertyRef Name="ListingId" />
@@ -145,8 +119,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AttractionsListingUsageType_AttractionsUsageType">
-          <End Role="AttractionsUsageType" Type="AttractionsModel.Store.AttractionsUsageType" Multiplicity="1" />
-          <End Role="AttractionsListingUsageType" Type="AttractionsModel.Store.AttractionsListingUsageType" Multiplicity="*" />
+          <End Role="AttractionsUsageType" Type="Self.AttractionsUsageType" Multiplicity="1" />
+          <End Role="AttractionsListingUsageType" Type="Self.AttractionsListingUsageType" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AttractionsUsageType">
               <PropertyRef Name="UsageTypeId" />
@@ -156,22 +130,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="AttractionsModelStoreContainer">
+          <EntitySet Name="AttractionsCategory" EntityType="Self.AttractionsCategory" Schema="Aram" store:Type="Tables" />
+          <EntitySet Name="AttractionsListing" EntityType="Self.AttractionsListing" Schema="Aram" store:Type="Tables" />
+          <EntitySet Name="AttractionsListingUsageType" EntityType="Self.AttractionsListingUsageType" Schema="Aram" store:Type="Tables" />
+          <EntitySet Name="AttractionsLocation" EntityType="Self.AttractionsLocation" Schema="Aram" store:Type="Tables" />
+          <EntitySet Name="AttractionsStatus" EntityType="Self.AttractionsStatus" Schema="Aram" store:Type="Tables" />
+          <EntitySet Name="AttractionsUsageType" EntityType="Self.AttractionsUsageType" Schema="Aram" store:Type="Tables" />
+          <AssociationSet Name="FK_AttractionsListing_AttractionsCategory" Association="Self.FK_AttractionsListing_AttractionsCategory">
+            <End Role="AttractionsCategory" EntitySet="AttractionsCategory" />
+            <End Role="AttractionsListing" EntitySet="AttractionsListing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttractionsListing_AttractionsLocation" Association="Self.FK_AttractionsListing_AttractionsLocation">
+            <End Role="AttractionsLocation" EntitySet="AttractionsLocation" />
+            <End Role="AttractionsListing" EntitySet="AttractionsListing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttractionsListing_AttractionsStatus" Association="Self.FK_AttractionsListing_AttractionsStatus">
+            <End Role="AttractionsStatus" EntitySet="AttractionsStatus" />
+            <End Role="AttractionsListing" EntitySet="AttractionsListing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttractionsListingUsageType_AttractionsListing" Association="Self.FK_AttractionsListingUsageType_AttractionsListing">
+            <End Role="AttractionsListing" EntitySet="AttractionsListing" />
+            <End Role="AttractionsListingUsageType" EntitySet="AttractionsListingUsageType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttractionsListingUsageType_AttractionsUsageType" Association="Self.FK_AttractionsListingUsageType_AttractionsUsageType">
+            <End Role="AttractionsUsageType" EntitySet="AttractionsUsageType" />
+            <End Role="AttractionsListingUsageType" EntitySet="AttractionsListingUsageType" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AttractionsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="AttractionsEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="AttractionsCategories" EntityType="AttractionsModel.AttractionsCategory" />
-          <EntitySet Name="AttractionsListings" EntityType="AttractionsModel.AttractionsListing" />
-          <EntitySet Name="AttractionsLocations" EntityType="AttractionsModel.AttractionsLocation" />
           <EntitySet Name="AttractionsStatus" EntityType="AttractionsModel.AttractionsStatu" />
           <EntitySet Name="AttractionsUsageTypes" EntityType="AttractionsModel.AttractionsUsageType" />
+          <EntitySet Name="AttractionsListings" EntityType="AttractionsModel.AttractionsListing" />
           <AssociationSet Name="FK_AttractionsListing_AttractionsCategory" Association="AttractionsModel.FK_AttractionsListing_AttractionsCategory">
             <End Role="AttractionsCategory" EntitySet="AttractionsCategories" />
-            <End Role="AttractionsListing" EntitySet="AttractionsListings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AttractionsListing_AttractionsLocation" Association="AttractionsModel.FK_AttractionsListing_AttractionsLocation">
-            <End Role="AttractionsLocation" EntitySet="AttractionsLocations" />
             <End Role="AttractionsListing" EntitySet="AttractionsListings" />
           </AssociationSet>
           <AssociationSet Name="FK_AttractionsListing_AttractionsStatus" Association="AttractionsModel.FK_AttractionsListing_AttractionsStatus">
@@ -182,72 +179,65 @@
             <End Role="AttractionsListing" EntitySet="AttractionsListings" />
             <End Role="AttractionsUsageType" EntitySet="AttractionsUsageTypes" />
           </AssociationSet>
+          <EntitySet Name="AttractionsLocations" EntityType="AttractionsModel.AttractionsLocation" />
+          <AssociationSet Name="FK_AttractionsListing_AttractionsLocation" Association="AttractionsModel.FK_AttractionsListing_AttractionsLocation">
+            <End Role="AttractionsLocation" EntitySet="AttractionsLocations" />
+            <End Role="AttractionsListing" EntitySet="AttractionsListings" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AttractionsCategory">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
-          <Property Type="Int32" Name="CategoryId" Nullable="false" />
-          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AttractionsListings" Relationship="AttractionsModel.FK_AttractionsListing_AttractionsCategory" FromRole="AttractionsCategory" ToRole="AttractionsListing" />
-        </EntityType>
-        <EntityType Name="AttractionsListing">
-          <Key>
-            <PropertyRef Name="ListingId" />
-          </Key>
-          <Property Type="Int64" Name="ListingId" Nullable="false" />
-          <Property Type="String" Name="Title" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ShortDescription" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LongDescription" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="UserRating" />
-          <Property Type="Int32" Name="Ranking" />
-          <Property Type="Int32" Name="PromoRanking" />
-          <Property Type="Int32" Name="LocationId" />
-          <Property Type="Int32" Name="CategoryId" />
-          <Property Type="Int32" Name="StatusId" />
-          <Property Type="DateTime" Name="CreatedOn" Precision="0" />
-          <Property Type="String" Name="CreatedBy" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="ModifiedOn" Precision="0" />
-          <Property Type="String" Name="ModifiedBy" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AttractionsCategory" Relationship="AttractionsModel.FK_AttractionsListing_AttractionsCategory" FromRole="AttractionsListing" ToRole="AttractionsCategory" />
-          <NavigationProperty Name="AttractionsLocation" Relationship="AttractionsModel.FK_AttractionsListing_AttractionsLocation" FromRole="AttractionsListing" ToRole="AttractionsLocation" />
-          <NavigationProperty Name="AttractionsStatu" Relationship="AttractionsModel.FK_AttractionsListing_AttractionsStatus" FromRole="AttractionsListing" ToRole="AttractionsStatu" />
-          <NavigationProperty Name="AttractionsUsageTypes" Relationship="AttractionsModel.AttractionsListingUsageType" FromRole="AttractionsListing" ToRole="AttractionsUsageType" />
-        </EntityType>
-        <EntityType Name="AttractionsLocation">
-          <Key>
-            <PropertyRef Name="LocationId" />
-          </Key>
-          <Property Type="Int32" Name="LocationId" Nullable="false" />
-          <Property Type="String" Name="place_id" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="short_name" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="long_name" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="alt" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="types" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AttractionsListings" Relationship="AttractionsModel.FK_AttractionsListing_AttractionsLocation" FromRole="AttractionsLocation" ToRole="AttractionsListing" />
         </EntityType>
         <EntityType Name="AttractionsStatu">
           <Key>
             <PropertyRef Name="StatusId" />
           </Key>
-          <Property Type="Int32" Name="StatusId" Nullable="false" />
-          <Property Type="String" Name="StatusName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="IsPublished" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsPublished" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AttractionsListings" Relationship="AttractionsModel.FK_AttractionsListing_AttractionsStatus" FromRole="AttractionsStatu" ToRole="AttractionsListing" />
         </EntityType>
         <EntityType Name="AttractionsUsageType">
           <Key>
             <PropertyRef Name="UsageTypeId" />
           </Key>
-          <Property Type="Int32" Name="UsageTypeId" Nullable="false" />
-          <Property Type="String" Name="UsageTypeName" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="FromAge" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ToAge" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="MenWomenAllowed" />
+          <Property Name="UsageTypeId" Type="Int32" Nullable="false" />
+          <Property Name="UsageTypeName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="FromAge" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ToAge" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MenWomenAllowed" Type="Int32" />
           <NavigationProperty Name="AttractionsListings" Relationship="AttractionsModel.AttractionsListingUsageType" FromRole="AttractionsUsageType" ToRole="AttractionsListing" />
         </EntityType>
+        <EntityType Name="AttractionsListing">
+          <Key>
+            <PropertyRef Name="ListingId" />
+          </Key>
+          <Property Name="ListingId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LongDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserRating" Type="Int32" />
+          <Property Name="Ranking" Type="Int32" />
+          <Property Name="PromoRanking" Type="Int32" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AttractionsCategory" Relationship="AttractionsModel.FK_AttractionsListing_AttractionsCategory" FromRole="AttractionsListing" ToRole="AttractionsCategory" />
+          <NavigationProperty Name="AttractionsStatu" Relationship="AttractionsModel.FK_AttractionsListing_AttractionsStatus" FromRole="AttractionsListing" ToRole="AttractionsStatu" />
+          <NavigationProperty Name="AttractionsUsageTypes" Relationship="AttractionsModel.AttractionsListingUsageType" FromRole="AttractionsListing" ToRole="AttractionsUsageType" />
+          <NavigationProperty Name="AttractionsLocation" Relationship="AttractionsModel.FK_AttractionsListing_AttractionsLocation" FromRole="AttractionsListing" ToRole="AttractionsLocation" />
+        </EntityType>
         <Association Name="FK_AttractionsListing_AttractionsCategory">
-          <End Type="AttractionsModel.AttractionsCategory" Role="AttractionsCategory" Multiplicity="0..1" />
+          <End Type="AttractionsModel.AttractionsCategory" Role="AttractionsCategory" Multiplicity="1" />
           <End Type="AttractionsModel.AttractionsListing" Role="AttractionsListing" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AttractionsCategory">
@@ -255,18 +245,6 @@
             </Principal>
             <Dependent Role="AttractionsListing">
               <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AttractionsListing_AttractionsLocation">
-          <End Type="AttractionsModel.AttractionsLocation" Role="AttractionsLocation" Multiplicity="0..1" />
-          <End Type="AttractionsModel.AttractionsListing" Role="AttractionsListing" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AttractionsLocation">
-              <PropertyRef Name="LocationId" />
-            </Principal>
-            <Dependent Role="AttractionsListing">
-              <PropertyRef Name="LocationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -286,6 +264,32 @@
           <End Type="AttractionsModel.AttractionsListing" Role="AttractionsListing" Multiplicity="*" />
           <End Type="AttractionsModel.AttractionsUsageType" Role="AttractionsUsageType" Multiplicity="*" />
         </Association>
+        <EntityType Name="AttractionsLocation">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="place_id" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="formatted_address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="adr_address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AttractionsListings" Relationship="AttractionsModel.FK_AttractionsListing_AttractionsLocation" FromRole="AttractionsLocation" ToRole="AttractionsListing" />
+        </EntityType>
+        <Association Name="FK_AttractionsListing_AttractionsLocation">
+          <End Type="AttractionsModel.AttractionsLocation" Role="AttractionsLocation" Multiplicity="1" />
+          <End Type="AttractionsModel.AttractionsListing" Role="AttractionsListing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttractionsLocation">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="AttractionsListing">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -297,38 +301,6 @@
               <MappingFragment StoreEntitySet="AttractionsCategory">
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AttractionsListings">
-            <EntityTypeMapping TypeName="AttractionsModel.AttractionsListing">
-              <MappingFragment StoreEntitySet="AttractionsListing">
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
-                <ScalarProperty Name="PromoRanking" ColumnName="PromoRanking" />
-                <ScalarProperty Name="Ranking" ColumnName="Ranking" />
-                <ScalarProperty Name="UserRating" ColumnName="UserRating" />
-                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
-                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="ListingId" ColumnName="ListingId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AttractionsLocations">
-            <EntityTypeMapping TypeName="AttractionsModel.AttractionsLocation">
-              <MappingFragment StoreEntitySet="AttractionsLocation">
-                <ScalarProperty Name="types" ColumnName="types" />
-                <ScalarProperty Name="alt" ColumnName="alt" />
-                <ScalarProperty Name="long_name" ColumnName="long_name" />
-                <ScalarProperty Name="short_name" ColumnName="short_name" />
-                <ScalarProperty Name="place_id" ColumnName="place_id" />
-                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -352,6 +324,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AttractionsListings">
+            <EntityTypeMapping TypeName="AttractionsModel.AttractionsListing">
+              <MappingFragment StoreEntitySet="AttractionsListing">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="PromoRanking" ColumnName="PromoRanking" />
+                <ScalarProperty Name="Ranking" ColumnName="Ranking" />
+                <ScalarProperty Name="UserRating" ColumnName="UserRating" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ListingId" ColumnName="ListingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="AttractionsListingUsageType" TypeName="AttractionsModel.AttractionsListingUsageType" StoreEntitySet="AttractionsListingUsageType">
             <EndProperty Name="AttractionsUsageType">
               <ScalarProperty Name="UsageTypeId" ColumnName="UsageTypeId" />
@@ -360,6 +352,20 @@
               <ScalarProperty Name="ListingId" ColumnName="ListingId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="AttractionsLocations">
+            <EntityTypeMapping TypeName="AttractionsModel.AttractionsLocation">
+              <MappingFragment StoreEntitySet="AttractionsLocation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="adr_address" ColumnName="adr_address" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="formatted_address" ColumnName="formatted_address" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="place_id" ColumnName="place_id" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -377,6 +383,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

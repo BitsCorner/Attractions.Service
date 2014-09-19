@@ -12,6 +12,7 @@ namespace Attractions.Repository
         private GenericRepository<AttractionsCategory> categoryRepository;
         private GenericRepository<AttractionsListing> listingRepository;
         private GenericRepository<AttractionsUsageType> usageTypeRepository;
+        private GenericRepository<AttractionsLocation> locationRepository;
 
         public GenericRepository<AttractionsCategory> CategoryRepository
         {
@@ -44,6 +45,18 @@ namespace Attractions.Repository
                     this.usageTypeRepository = new GenericRepository<AttractionsUsageType>(context);
                 }
                 return usageTypeRepository;
+            }
+        }
+
+        public GenericRepository<AttractionsLocation> LocationRepository
+        {
+            get
+            {
+                if (this.locationRepository == null)
+                {
+                    this.locationRepository = new GenericRepository<AttractionsLocation>(context);
+                }
+                return locationRepository;
             }
         }
 

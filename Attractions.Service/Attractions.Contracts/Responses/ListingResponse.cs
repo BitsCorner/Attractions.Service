@@ -16,6 +16,7 @@ namespace Attractions.Contracts.Responses
         public int? Ranking { get; set; }
         public int? PromoRank { get; set; }
         public int? Views { get; set; }
-        //public IEnumerable<UsageType> UsageTypes { get; set; }
+        public LocationResponse Location { get; set; }
+        public CategoryResponse Category { get; set; }
     }
 }

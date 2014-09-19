@@ -13,31 +13,56 @@ namespace Attractions.Processor
     public class ListingProcessor : IListingProcessor
     {
         protected UnitOfWork unitOfWork = new UnitOfWork();
-        public ListingProcessor(UnitOfWork unitOfWork)
+        protected IGoogleRepository googleRepository;
+
+        public ListingProcessor(UnitOfWork unitOfWork, IGoogleRepository googleRepository)
         {
             this.unitOfWork = unitOfWork;
+            this.googleRepository = googleRepository;
         }
 
         public async Task<IEnumerable<ListingResponse>> GetAllListingsAsync()
         {
             var result = await unitOfWork.ListingRepository.GetAsync();
-            //includeProperties: "Location,Category,Locale,UsageTypes,Status"
             return EntityMapper.Map(result);
         }
 
         public async Task<ListingResponse> InsertListingAsync(ListingRequest listing)
         {
+            var LocationId  = await CreateLocation(listing.PlaceId);
+
             var contextListing = EntityMapper.Map(listing);
-            try
-            {
-                await unitOfWork.ListingRepository.InsertAsync(contextListing);
-                await unitOfWork.SaveAsync();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            contextListing.LocationId = LocationId;
+           
+            await unitOfWork.ListingRepository.InsertAsync(contextListing);
+            await unitOfWork.SaveAsync();
+
             return EntityMapper.Map(contextListing);
+        }
+
+        private async Task<int> CreateLocation(string PlaceId)
+        {
+            var result = await unitOfWork.LocationRepository.GetAsync(filter: m=>m.place_id == PlaceId);
+            var location = result.FirstOrDefault();
+            if(location != null)
+                return location.LocationId;
+            else
+            {
+
+                var newLocation = await GetNewLocationInfo(PlaceId);
+                await unitOfWork.LocationRepository.InsertAsync(newLocation);
+                await unitOfWork.SaveAsync();
+                return newLocation.LocationId;
+            }
+        }
+
+        private async Task<AttractionsLocation> GetNewLocationInfo(string PlaceId)
+        {
+            var location = await googleRepository.GetGooglePlacebyId(PlaceId);
+            if (location == null)
+                return null;
+            else
+                return location;
         }
 
         public async Task<IEnumerable<CategoryResponse>> GetCategoriesAsync()

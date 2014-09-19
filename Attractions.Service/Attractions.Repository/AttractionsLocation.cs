@@ -21,10 +21,12 @@ namespace Attractions.Repository
     
         public int LocationId { get; set; }
         public string place_id { get; set; }
-        public string short_name { get; set; }
-        public string long_name { get; set; }
-        public string alt { get; set; }
-        public string types { get; set; }
+        public string name { get; set; }
+        public string reference { get; set; }
+        public string formatted_address { get; set; }
+        public string url { get; set; }
+        public string adr_address { get; set; }
+        public string id { get; set; }
     
         public virtual ICollection<AttractionsListing> AttractionsListings { get; set; }
     }

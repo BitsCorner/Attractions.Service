@@ -1,4 +1,5 @@
 ﻿using Attractions.Processor;
+using Attractions.Repository;
 using BitsCorner.Logging;
 using Microsoft.Practices.Unity;
 using System;
@@ -16,6 +17,9 @@ namespace Attractions.Service
             var container = new UnityContainer();
             
             container.RegisterType<IListingProcessor, ListingProcessor>();
+            container.RegisterType<IGoogleRepository, GoogleRepository>();
+            container.RegisterType<IHttpClientHelper, HttpClientHelper>();
+            
 
             config.DependencyResolver = new UnityResolver(container);
         }

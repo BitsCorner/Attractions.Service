@@ -8,5 +8,8 @@ namespace Attractions.Repository
     public interface IGoogleRepository
     {
         //Task<IEnumerable<LocationPrediction>> GetLocations(string location);
+        Task<AttractionsLocation> GetGooglePlacebyId(string PlaceId);
+
+
     }
 }

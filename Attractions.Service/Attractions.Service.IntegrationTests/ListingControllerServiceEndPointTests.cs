@@ -36,7 +36,7 @@ namespace Attractions.Service.IntegrationTests
                 HttpResponseMessage response = await client.GetAsync(ListingController_GetAsync_Uri);
                 if (response.IsSuccessStatusCode)
                 {
-                    ListingRequest listing = await response.Content.ReadAsAsync<ListingRequest>();
+                    //ListingRequest listing = await response.Content.ReadAsStringAsync();
                 }
             }
         }
@@ -50,12 +50,12 @@ namespace Attractions.Service.IntegrationTests
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var lisitng = new ListingRequest() { ShortDescription = "", Title = "" };
-                var response = await client.PostAsJsonAsync(ListingController_PostAsync_Uri, lisitng);
-                if (response.IsSuccessStatusCode)
-                {
+                //var response = await client.PostAsync(ListingController_PostAsync_Uri, lisitng);
+                //if (response.IsSuccessStatusCode)
+                //{
                     // Get the URI of the created resource.
-                    Uri gizmoUrl = response.Headers.Location;
-                }
+                //    Uri gizmoUrl = response.Headers.Location;
+                //}
             }
         }
     }

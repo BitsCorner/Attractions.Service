@@ -20,7 +20,6 @@ namespace Attractions.Processor
 
             return new AttractionsListing
                    {
-                       //ListingId = item.ListingId,
                        Title = listing.Title,
                        ShortDescription = listing.ShortDescription,
                        LongDescription = listing.LongDescription,
@@ -29,8 +28,7 @@ namespace Attractions.Processor
                        //Ranking = item.Ranking,
                        //PromoRank = item.PromoRanking,
                        //Views = item.Views,
-                       AttractionsLocation = new AttractionsLocation { place_id = listing.LocationId},
-                       AttractionsCategory = new AttractionsCategory { CategoryId = int.Parse(listing.CategoryId) }
+                       CategoryId = listing.CategoryId
                    };
         }
 
@@ -46,14 +44,42 @@ namespace Attractions.Processor
                        Title = item.Title,
                        ShortDescription = item.ShortDescription,
                        LongDescription = item.LongDescription,
-                       //Locale = Map(item.Locale),
                        UserRating = item.UserRating,
                        Ranking = item.Ranking,
+                       Location = Map(item.AttractionsLocation),
+                       Category = Map(item.AttractionsCategory),
                        //PromoRank = item.PromoRank,
                        //Views = item.Views,
                        //Location = item.Location,
                        //Category = item.Category
                    };
+        }
+
+        private static CategoryResponse Map(AttractionsCategory attractionsCategory)
+        {
+            if (attractionsCategory == null)
+                return null;
+
+            return new CategoryResponse
+            {
+                CategoryId = attractionsCategory.CategoryId,
+                CategoryName = attractionsCategory.CategoryName
+            };
+        }
+
+        private static LocationResponse Map(AttractionsLocation attractionsLocation)
+        {
+            if (attractionsLocation == null)
+                return null;
+
+            return new LocationResponse
+            {
+                LocationId = attractionsLocation.LocationId,
+                GooglePlaceId = attractionsLocation.place_id,
+                Name = attractionsLocation.name,
+                Address = attractionsLocation.formatted_address,
+                Url = attractionsLocation.url
+            };
         }
 
         internal static ListingResponse Map(AttractionsListing item)

@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7efe501751814d50b607b3d38ea3f38d" Name="Diagram1">
-        <EntityTypeShape EntityType="AttractionsModel.AttractionsCategory" Width="1.5" PointX="10.108433687178621" PointY="8.7710735838725569" />
-        <EntityTypeShape EntityType="AttractionsModel.AttractionsListing" Width="1.5" PointX="1.8568445247862697" PointY="29.328759445496257" />
-        <EntityTypeShape EntityType="AttractionsModel.AttractionsLocation" Width="1.5" PointX="9.7063707512367365" PointY="1.082378268745904" />
-        <EntityTypeShape EntityType="AttractionsModel.AttractionsStatu" Width="1.5" PointX="3.6704439612433517" PointY="27.133975280045519" />
-        <EntityTypeShape EntityType="AttractionsModel.AttractionsUsageType" Width="1.5" PointX="5.8870285441572907" PointY="14.488331130933171" />
+      <Diagram DiagramId="7efe501751814d50b607b3d38ea3f38d" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="AttractionsModel.AttractionsCategory" Width="1.5" PointX="0.75" PointY="6.875" />
+        <EntityTypeShape EntityType="AttractionsModel.AttractionsStatu" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="AttractionsModel.AttractionsUsageType" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="AttractionsModel.AttractionsListing" Width="1.5" PointX="3" PointY="2.375" />
         <AssociationConnector Association="AttractionsModel.FK_AttractionsListing_AttractionsCategory" />
-        <AssociationConnector Association="AttractionsModel.FK_AttractionsListing_AttractionsLocation" />
         <AssociationConnector Association="AttractionsModel.FK_AttractionsListing_AttractionsStatus" />
         <AssociationConnector Association="AttractionsModel.AttractionsListingUsageType" />
+        <EntityTypeShape EntityType="AttractionsModel.AttractionsLocation" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="AttractionsModel.FK_AttractionsListing_AttractionsLocation" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

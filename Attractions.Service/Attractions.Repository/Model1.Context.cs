@@ -26,9 +26,9 @@ namespace Attractions.Repository
         }
     
         public DbSet<AttractionsCategory> AttractionsCategories { get; set; }
-        public DbSet<AttractionsListing> AttractionsListings { get; set; }
-        public DbSet<AttractionsLocation> AttractionsLocations { get; set; }
         public DbSet<AttractionsStatu> AttractionsStatus { get; set; }
         public DbSet<AttractionsUsageType> AttractionsUsageTypes { get; set; }
+        public DbSet<AttractionsListing> AttractionsListings { get; set; }
+        public DbSet<AttractionsLocation> AttractionsLocations { get; set; }
     }
 }

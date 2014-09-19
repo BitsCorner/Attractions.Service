@@ -26,8 +26,8 @@ namespace Attractions.Repository
         public Nullable<int> UserRating { get; set; }
         public Nullable<int> Ranking { get; set; }
         public Nullable<int> PromoRanking { get; set; }
-        public Nullable<int> LocationId { get; set; }
-        public Nullable<int> CategoryId { get; set; }
+        public int LocationId { get; set; }
+        public int CategoryId { get; set; }
         public Nullable<int> StatusId { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string CreatedBy { get; set; }
@@ -35,8 +35,8 @@ namespace Attractions.Repository
         public string ModifiedBy { get; set; }
     
         public virtual AttractionsCategory AttractionsCategory { get; set; }
-        public virtual AttractionsLocation AttractionsLocation { get; set; }
         public virtual AttractionsStatu AttractionsStatu { get; set; }
         public virtual ICollection<AttractionsUsageType> AttractionsUsageTypes { get; set; }
+        public virtual AttractionsLocation AttractionsLocation { get; set; }
     }
 }
