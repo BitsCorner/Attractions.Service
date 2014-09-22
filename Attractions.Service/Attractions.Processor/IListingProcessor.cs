@@ -13,6 +13,8 @@ namespace Attractions.Processor
     {
         Task<IEnumerable<ListingResponse>> GetAllListingsAsync();
 
+        Task<ListingResponse> GetListingByIdAsync(int listingId);
+
         Task<ListingResponse> InsertListingAsync(ListingRequest listing);
 
         Task<IEnumerable<CategoryResponse>> GetCategoriesAsync();

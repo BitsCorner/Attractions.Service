@@ -35,11 +35,10 @@ namespace Attractions.Service.Controllers
         /// <returns></returns>
         public async Task<IHttpActionResult> GetAsync(int id)
         {
-            return null;
-            //var content = await this.listingProcessor.GetListingByIdAsync(id);
-            //if (content == null)
-            //    return NotFound();
-            //return Ok(content);
+            var content = await this.listingProcessor.GetListingByIdAsync(id);
+            if (content == null)
+                return NotFound();
+            return Ok(content);
         }
 
         public async Task<IHttpActionResult> PostAsync([FromBody]ListingRequest listing)

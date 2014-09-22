@@ -93,16 +93,16 @@ namespace Attractions.Processor
                        Title = item.Title,
                        ShortDescription = item.ShortDescription,
                        LongDescription = item.LongDescription,
-                       //Locale = Map(item.Locale),
                        UserRating = item.UserRating,
                        Ranking = item.Ranking,
-                       PromoRank = item.PromoRanking,
+                       Location = Map(item.AttractionsLocation),
+                       Category = Map(item.AttractionsCategory),
+                       //PromoRank = item.PromoRank,
                        //Views = item.Views,
                        //Location = item.Location,
                        //Category = item.Category
                    };
         }
-
 
         internal static IEnumerable<UsageTypeResponse> Map(IEnumerable<Repository.AttractionsUsageType> usageTypes)
         {

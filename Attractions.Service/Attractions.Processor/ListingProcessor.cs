@@ -21,9 +21,16 @@ namespace Attractions.Processor
             this.googleRepository = googleRepository;
         }
 
+        #region Public Members
         public async Task<IEnumerable<ListingResponse>> GetAllListingsAsync()
         {
             var result = await unitOfWork.ListingRepository.GetAsync();
+            return EntityMapper.Map(result);
+        }
+
+        public async Task<ListingResponse> GetListingByIdAsync(int listingId)
+        {
+            var result = await unitOfWork.ListingRepository.GetByIDAsync(listingId);
             return EntityMapper.Map(result);
         }
 
@@ -40,11 +47,26 @@ namespace Attractions.Processor
             return EntityMapper.Map(contextListing);
         }
 
+        public async Task<IEnumerable<CategoryResponse>> GetCategoriesAsync()
+        {
+            var result = await unitOfWork.CategoryRepository.GetAsync();
+            return EntityMapper.Map(result);
+        }
+
+        public async Task<IEnumerable<UsageTypeResponse>> GetUsageTypesAsync()
+        {
+            var result = await unitOfWork.UsageTypeRepository.GetAsync();
+            return EntityMapper.Map(result);
+        }
+
+        #endregion
+
+        #region Private Members
         private async Task<int> CreateLocation(string PlaceId)
         {
-            var result = await unitOfWork.LocationRepository.GetAsync(filter: m=>m.place_id == PlaceId);
+            var result = await unitOfWork.LocationRepository.GetAsync(filter: m => m.place_id == PlaceId);
             var location = result.FirstOrDefault();
-            if(location != null)
+            if (location != null)
                 return location.LocationId;
             else
             {
@@ -65,16 +87,7 @@ namespace Attractions.Processor
                 return location;
         }
 
-        public async Task<IEnumerable<CategoryResponse>> GetCategoriesAsync()
-        {
-            var result = await unitOfWork.CategoryRepository.GetAsync();
-            return EntityMapper.Map(result);
-        }
+        #endregion
 
-        public async Task<IEnumerable<UsageTypeResponse>> GetUsageTypesAsync()
-        {
-            var result = await unitOfWork.UsageTypeRepository.GetAsync();
-            return EntityMapper.Map(result);
-        }
     }
 }
